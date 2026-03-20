@@ -94,6 +94,19 @@
     .choice-btn.wrong     { border-color: var(--red);   background: rgba(231,76,60,0.09); opacity: 0.72; }
     .choice-btn.wrong .choice-letter { background: var(--red); color: #fff; }
 
+    /* multi-select instruction badge */
+    .multiselect-hint {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: rgba(155,89,182,0.18);
+      border: 1px solid rgba(155,89,182,0.4);
+      color: #c39bd3;
+      margin-bottom: 0.8rem;
+    }
+
     .feedback-box { margin-top: 0.9rem; padding: 0.95rem 1.1rem; border-radius: 10px; font-size: 0.88rem; line-height: 1.55; display: none; animation: fadeUp 0.22s ease both; }
     .feedback-box.correct { background: rgba(46,204,113,0.1);  border: 1.5px solid rgba(46,204,113,0.32); }
     .feedback-box.wrong   { background: rgba(231,76,60,0.09); border: 1.5px solid rgba(231,76,60,0.28); }
@@ -194,8 +207,9 @@
 </main>
 
 <footer class="site-footer">
-  Questions modeled after the MCAS Grade 8 STE format &nbsp;·&nbsp; Original content by
+  Original questions modeled after the MCAS Grade 8 STE format &nbsp;·&nbsp; Content by
   <a href="index.html">LyfeLabz</a> &nbsp;·&nbsp;
+  Released item topics sourced from <a href="https://www.doe.mass.edu/mcas/" target="_blank">MA DESE MCAS</a> (non-commercial educational use) &nbsp;·&nbsp;
   <a href="works-cited.html">Works Cited</a>
 </footer>
 
@@ -662,6 +676,222 @@ const QUESTIONS = [
     explanation:"Engineering design requires evaluating solutions against all criteria and constraints together. No single factor dominates — the best solution satisfies all requirements, and trade-offs must be explicitly considered and documented.",
     standard:"8.MS-ETS1-2" }
 
+
+  // ══════════════════════════════════════════════
+  //  NEW — 2025 MCAS GAP QUESTIONS
+  //  Topics from Spring 2025 released items not
+  //  yet covered in the bank above.
+  // ══════════════════════════════════════════════
+
+  // G6 PS — Wave amplitude & energy (6.PS.4.1)
+  { grade:"6", domain:"ps", topic:"Waves & Energy", type:"Multiple Choice",
+    scenario:"Two waves are drawn on a graph. Wave A has tall, widely spaced peaks. Wave B has short, closely spaced peaks. Both waves travel through the same medium.",
+    stem:"Which statement BEST compares the energy carried by the two waves?",
+    choices:[
+      "Wave A carries more energy than Wave B because Wave A has a larger amplitude.",
+      "Wave B carries more energy than Wave A because Wave B has a higher frequency.",
+      "Both waves carry the same energy because they travel through the same medium.",
+      "Wave A carries less energy than Wave B because Wave A has a longer wavelength."
+    ],
+    answer:0,
+    explanation:"A wave's energy depends on its amplitude — the height of its peaks. A larger amplitude means more energy is transferred. Wave A has a larger amplitude, so it carries more energy. Frequency also affects energy, but amplitude is the most direct factor shown here.",
+    standard:"6.MS-PS4-1" },
+
+  // G6 ESS — Moon phases cause (6.ESS.1.1)
+  { grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
+    stem:"Which BEST explains why the Moon appears to change shape over the course of a month?",
+    choices:[
+      "The Moon physically changes its shape as it orbits Earth.",
+      "Earth's shadow falls on different parts of the Moon each night.",
+      "The Moon reflects sunlight, and as it orbits Earth, different portions of its lit half are visible from Earth.",
+      "The Sun produces different amounts of light depending on the season."
+    ],
+    answer:2,
+    explanation:"The Moon does not produce its own light — it reflects sunlight. As the Moon orbits Earth, the angle between the Sun, Moon, and Earth changes. This causes us to see different fractions of the Moon's sunlit half, creating the appearance of changing phases.",
+    standard:"6.MS-ESS1-1a" },
+
+  // G6 ESS — Milky Way galaxy scale (6.ESS.1.5)
+  { grade:"6", domain:"ess", topic:"The Universe & Scale", type:"Multiple Choice",
+    stem:"Which statement BEST describes the Milky Way galaxy?",
+    choices:[
+      "The Milky Way is another name for our solar system, containing the Sun and its eight planets.",
+      "The Milky Way is a galaxy containing billions of stars, and our Sun is one of those stars located in one of its spiral arms.",
+      "The Milky Way is the name for the universe, which contains only one galaxy.",
+      "The Milky Way consists of the Sun, Moon, and the planets in our solar system."
+    ],
+    answer:1,
+    explanation:"The Milky Way is our home galaxy — a spiral galaxy containing an estimated 200–400 billion stars. Our Sun is just one of those stars, located roughly two-thirds of the way out from the center in one of the spiral arms. The Milky Way is just one of hundreds of billions of galaxies in the observable universe.",
+    standard:"6.MS-ESS1-5" },
+
+  // G6 ESS — Rock layers & relative dating (6.ESS.1.4)
+  { grade:"6", domain:"ess", topic:"Rock Layers & Earth History", type:"Multiple Choice",
+    scenario:"A geologist examines a cliff face showing five horizontal rock layers. Layer A is at the top. Layer B is below A. Layer C is below B. Layer D is below C. Layer E is at the bottom.",
+    stem:"According to the principle of superposition, which layer is the OLDEST?",
+    choices:[
+      "Layer A, because it is on top and was deposited last.",
+      "Layer C, because it is in the middle of the sequence.",
+      "Layer E, because it is at the bottom and was deposited first.",
+      "All layers are the same age because they are part of the same cliff."
+    ],
+    answer:2,
+    explanation:"The principle of superposition states that in undisturbed rock layers, older layers are found at the bottom and younger layers at the top. Sediments are deposited over time, so the lowest layer (E) was deposited first and is the oldest. Layer A is the youngest.",
+    standard:"6.MS-ESS1-4" },
+
+  // G7 LS — Ecological relationship vocabulary (7.LS.2.2)
+  { grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+    scenario:"In a grassland ecosystem, lions and cheetahs both hunt zebras. Neither predator attacks the other, but their shared need for zebra prey means that more kills by one predator leaves less food for the other.",
+    stem:"Which term BEST describes the relationship between lions and cheetahs in this ecosystem?",
+    choices:[
+      "Mutualism — both species benefit from sharing the grassland.",
+      "Parasitism — one species benefits while the other is harmed.",
+      "Competition — both species are harmed by sharing the same food resource.",
+      "Predation — one species hunts and kills the other for food."
+    ],
+    answer:2,
+    explanation:"Competition occurs when two or more species (or individuals) use the same limited resource, reducing its availability for the others. Lions and cheetahs both need zebra prey, so each one's success reduces the food available for the other. Neither directly harms the other, but both are negatively affected by sharing the resource.",
+    standard:"7.MS-LS2-2" },
+
+  // G7 LS — Population graph analysis (7.LS.2.1)
+  { grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+    scenario:"A scientist tracked the populations of snowshoe hares and Canada lynx in a forest over 30 years. The data showed that when hare populations peaked, lynx populations peaked about 2 years later. When hare populations crashed, lynx populations crashed 2 years after.",
+    stem:"Which conclusion is BEST supported by this data pattern?",
+    choices:[
+      "The lynx population controls the hare population with no effect on lynx numbers.",
+      "The hare population increases because lynx populations decrease first.",
+      "Hare and lynx populations cycle together — hare abundance drives lynx population changes with a time delay.",
+      "The populations are unrelated because they peak at different times."
+    ],
+    answer:2,
+    explanation:"The time-delayed cycling pattern is characteristic of predator-prey dynamics. Abundant hares provide more food for lynx, so lynx populations grow — but with a lag. As lynx increase, they reduce hare numbers. Then with less food, lynx populations decline, and the cycle repeats. The 2-year lag reflects the time for population changes to ripple through the food web.",
+    standard:"7.MS-LS2-1" },
+
+  // G7 PS — Non-contact forces / magnetism (7.PS.2.5)
+  { grade:"7", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+    scenario:"A student holds two bar magnets with their north poles facing each other. When the student releases them, the magnets move apart — even though they never touch.",
+    stem:"Which BEST explains why the magnets move apart without touching?",
+    choices:[
+      "Gravity between the magnets pushes them apart.",
+      "Air pressure between the magnets forces them away from each other.",
+      "Magnetic fields around the magnets exert a repulsive force — like poles repel.",
+      "The magnets have opposite electric charges that push them apart."
+    ],
+    answer:2,
+    explanation:"Magnets exert non-contact forces through their magnetic fields. Like poles (N–N or S–S) repel each other; opposite poles (N–S) attract. The force acts even without physical contact because magnetic fields extend through space. This is fundamentally different from gravity (always attractive) or electric forces.",
+    standard:"7.MS-PS2-5" },
+
+  // G7 PS — Kinetic energy change scenarios (7.PS.3.5)
+  { grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
+    scenario:"A soccer player kicks a ball that is sitting still on the ground. After the kick, the ball rolls quickly across the field.",
+    stem:"Which BEST describes what happened to the ball's energy during the kick?",
+    choices:[
+      "The ball gained kinetic energy from the kick.",
+      "The ball lost gravitational potential energy from the kick.",
+      "The ball had more kinetic energy before the kick than after.",
+      "The ball had more gravitational potential energy after the kick than before."
+    ],
+    answer:0,
+    explanation:"Before the kick, the ball is at rest — it has zero kinetic energy. The player's foot transfers energy to the ball. After the kick, the ball is moving fast, so it has gained kinetic energy. The kick converts chemical energy from the player's muscles into kinetic energy in the ball.",
+    standard:"7.MS-PS3-5" },
+
+  // G7 PS — GPE depends on both height AND mass (7.PS.3.2)
+  { grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
+    scenario:"Cart X (mass 100 kg) sits at the top of a hill. Cart Y (mass 200 kg) sits at the bottom of the same hill. Cart Z (mass 200 kg) sits at the top of the hill alongside Cart X.",
+    stem:"Which cart has the GREATEST gravitational potential energy?",
+    choices:[
+      "Cart X, because it is at the top of the hill.",
+      "Cart Y, because it has more mass than Cart X.",
+      "Cart Z, because it has the most mass AND is at the greatest height.",
+      "Cart X and Cart Z have equal gravitational potential energy because they are at the same height."
+    ],
+    answer:2,
+    explanation:"Gravitational potential energy (GPE) depends on BOTH height AND mass: GPE = mass × gravitational acceleration × height. Cart Z is at the top (maximum height) AND has the greatest mass (200 kg), so it has the most GPE. Cart X is at the same height but has less mass, so less GPE. Cart Y has mass but is at the bottom (zero height), so it has the least GPE.",
+    standard:"7.MS-PS3-2" },
+
+  // G7 TE — Engineering data table / criteria (7.ETS.1.4)
+  { grade:"7", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
+    scenario:"A town wants to improve cell phone service by adding new cell towers. The table below shows signal detection at different distances from a tower:\n• 10 km: signal detected ✓\n• 20 km: signal detected ✓\n• 30 km: signal detected ✓\n• 40 km: signal sometimes detected\n• 50 km: signal sometimes detected\n• 60 km: no signal detected\nThe town wants full signal coverage at minimum cost.",
+    stem:"Based on this data, what is the MAXIMUM distance between cell towers that would guarantee full signal detection?",
+    choices:[
+      "10 km — the first distance tested",
+      "30 km — the farthest distance where signal is always detected",
+      "50 km — the farthest distance where signal is sometimes detected",
+      "60 km — the full range of the data table"
+    ],
+    answer:1,
+    explanation:"The data shows reliable signal detection at up to 30 km. At 40 and 50 km detection is inconsistent, and at 60 km there is no signal. To guarantee full coverage (not just sometimes), towers must be placed so that every location is within 30 km of a tower. Placing towers farther apart would leave some areas with unreliable or no service.",
+    standard:"7.MS-ETS1-4" },
+
+  // G8 ESS — Fossil fuels & ancient environments (8.ESS.3.1)
+  { grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Choice",
+    scenario:"Two U.S. states, Texas and Vermont, have very different amounts of oil and natural gas reserves. Texas has large reserves; Vermont has essentially none.",
+    stem:"Which BEST explains this difference in fossil fuel resources?",
+    choices:[
+      "Texas has more factories that produce oil from air and water.",
+      "Vermont's colder climate prevents oil from forming underground.",
+      "Millions of years ago, much of Texas was covered by shallow seas full of marine organisms whose remains became buried and slowly converted into oil and gas.",
+      "Texas is closer to the equator, and oil only forms in tropical climates."
+    ],
+    answer:2,
+    explanation:"Fossil fuels form from the remains of ancient organisms — mostly marine plankton and algae — that were buried under sediment in ancient seas. Over millions of years, heat and pressure converted this organic matter into oil and natural gas. Texas has large deposits because much of it was once covered by shallow tropical seas. Vermont's geological history is very different, with no equivalent ancient marine sediment.",
+    standard:"8.MS-ESS3-1" },
+
+  // G8 ESS — Air masses & weather fronts (8.ESS.2.5)
+  { grade:"8", domain:"ess", topic:"Weather & Climate", type:"Multiple Choice",
+    scenario:"A cold, dry air mass from Canada moves south toward New England. It collides with a warm, moist air mass sitting over the region.",
+    stem:"What weather change would MOST LIKELY occur in New England as the cold front arrives?",
+    choices:[
+      "Temperatures will rise and skies will become clearer as the cold air warms up.",
+      "Temperatures will drop and cloudy, stormy weather will develop as the warm moist air is forced upward.",
+      "Temperatures will stay the same but winds will become calmer.",
+      "The warm air mass will push the cold air back north, causing drought conditions."
+    ],
+    answer:1,
+    explanation:"When a cold front arrives, the denser cold air pushes under the lighter warm air, forcing it to rise rapidly. As warm, moist air rises and cools, water vapor condenses into clouds and precipitation. Temperatures drop behind the front as the cold air mass replaces the warm one. Cold fronts typically bring fast-moving storms followed by clearing skies and cooler temperatures.",
+    standard:"8.MS-ESS2-5" },
+
+  // G8 LS — Punnett square setup (8.LS.3.4)
+  { grade:"8", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
+    scenario:"A gene for earlobe shape has two alleles: free earlobes (F) is dominant over attached earlobes (f). One parent has the genotype Ff (free earlobes). The other parent has the genotype ff (attached earlobes).",
+    stem:"Which Punnett square CORRECTLY shows this cross?",
+    choices:[
+      "Parent alleles across the top: F, F — Parent alleles down the side: f, f → produces FF, Ff, FF, Ff",
+      "Parent alleles across the top: F, f — Parent alleles down the side: f, f → produces Ff, ff, Ff, ff",
+      "Parent alleles across the top: f, f — Parent alleles down the side: f, f → produces ff, ff, ff, ff",
+      "Parent alleles across the top: F, f — Parent alleles down the side: F, f → produces FF, Ff, Ff, ff"
+    ],
+    answer:1,
+    explanation:"To set up a Punnett square, put one parent's alleles across the top and the other parent's down the side. Parent 1 (Ff) contributes F and f alleles. Parent 2 (ff) contributes f and f alleles. The cross Ff × ff produces: Ff, ff, Ff, ff — meaning 50% free earlobes (Ff) and 50% attached earlobes (ff). Option B correctly shows this setup.",
+    standard:"8.MS-LS3-4" },
+
+  // G8 TE — Manufacturing finishing step (8.ETS.2.5)
+  { grade:"8", domain:"te", topic:"Technology & Manufacturing", type:"Multiple Choice",
+    scenario:"A company manufactures wooden outdoor chairs. The steps in their process include: cutting lumber to length, drilling holes for screws, sanding rough surfaces smooth, assembling the pieces with screws, and spraying with weatherproof sealant.",
+    stem:"Which step BEST represents a FINISHING step in the manufacturing process?",
+    choices:[
+      "Cutting lumber to length",
+      "Drilling holes for screws",
+      "Assembling the pieces with screws",
+      "Spraying with weatherproof sealant"
+    ],
+    answer:3,
+    explanation:"In manufacturing, finishing steps are the final processes applied to a completed product to improve its appearance, durability, or performance — not to shape or assemble it. Applying weatherproof sealant is a finishing step: it protects the surface of the completed chair. Cutting, drilling, and assembling are forming and joining steps that happen before finishing.",
+    standard:"8.MS-ETS2-5" },
+
+  // G8 ESS — Multi-select: human activities increasing CO₂ (8.ESS.3.5)
+  { grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Select",
+    scenario:"The graph of atmospheric CO₂ from 1900 to 2020 shows a rapid increase, rising from about 300 ppm to over 400 ppm — a more than 30% increase.",
+    stem:"Select the THREE activities that have MOST contributed to this rise in atmospheric CO₂.",
+    choices:[
+      "Using bicycles as the primary form of transportation",
+      "Cutting down forests to build farms and cities",
+      "Burning coal at power plants to generate electricity",
+      "Installing solar panels on homes and businesses",
+      "Burning gasoline and diesel to power cars and trucks"
+    ],
+    answers:[1,2,4],
+    explanation:"Three activities drive most of the CO₂ increase: (1) Deforestation removes trees that absorb CO₂ and releases stored carbon; (2) burning coal for electricity releases CO₂ from fossil fuels; (3) burning gasoline/diesel in vehicles releases CO₂. Cycling and solar panels produce no CO₂ emissions — they are low-carbon alternatives. Correct answers: B, C, E.",
+    standard:"8.MS-ESS3-5" }
+
 ]; // end QUESTIONS
 
 // ═══════════════════ STATE ═══════════════════
@@ -671,7 +901,8 @@ let filteredQs     = [];
 let currentIdx     = 0;
 let score          = 0;
 let answered       = 0;
-let selectedChoice = null;
+let selectedChoice  = null;
+let selectedChoices = [];  // for multi-select questions
 let domainStats    = {};
 
 // ════════════════════ INIT ════════════════════
@@ -718,7 +949,8 @@ function loadQuestions() {
   currentIdx     = 0;
   score          = 0;
   answered       = 0;
-  selectedChoice = null;
+  selectedChoice  = null;
+  selectedChoices = [];
   domainStats    = { ls:{c:0,t:0}, ps:{c:0,t:0}, ess:{c:0,t:0}, te:{c:0,t:0} };
 
   document.getElementById("endScreen").style.display    = "none";
@@ -748,6 +980,10 @@ function renderQuestion() {
   const scenarioHTML = q.scenario
     ? `<div class="q-scenario">${q.scenario.replace(/\n/g,"<br>")}</div>` : "";
 
+  const isMulti = q.type === "Multiple Select";
+  const hintHTML = isMulti
+    ? `<div class="multiselect-hint">✦ Select ALL correct answers before checking</div>` : "";
+
   const choicesHTML = q.choices.map((c,i) =>
     `<button class="choice-btn" onclick="selectChoice(this,${i})">
       <span class="choice-letter">${letters[i]}</span>
@@ -764,6 +1000,7 @@ function renderQuestion() {
         <span class="q-type-pill">${q.type}</span>
       </div>
       ${scenarioHTML}
+      ${hintHTML}
       <p class="q-stem">${q.stem}</p>
       <div class="choices">${choicesHTML}</div>
       <div class="feedback-box" id="feedbackBox"></div>
@@ -779,25 +1016,70 @@ function renderQuestion() {
 // ══════════════════ INTERACTION ══════════════════
 function selectChoice(btn, idx) {
   if (btn.closest(".choices").querySelector(".correct,.wrong")) return;
-  btn.closest(".choices").querySelectorAll(".choice-btn").forEach(b => b.classList.remove("selected"));
-  btn.classList.add("selected");
-  selectedChoice = idx;
-  document.getElementById("btnCheck").disabled = false;
+  const q = filteredQs[currentIdx];
+  const isMulti = q.type === "Multiple Select";
+
+  if (isMulti) {
+    // Toggle this choice on/off; allow multiple selections
+    btn.classList.toggle("selected");
+    if (!btn.classList.contains("selected")) {
+      // If we just de-selected, check if index was in selectedChoices
+      selectedChoices = selectedChoices.filter(i => i !== idx);
+    } else {
+      if (!selectedChoices.includes(idx)) selectedChoices.push(idx);
+    }
+    document.getElementById("btnCheck").disabled = selectedChoices.length === 0;
+  } else {
+    btn.closest(".choices").querySelectorAll(".choice-btn").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    selectedChoice = idx;
+    document.getElementById("btnCheck").disabled = false;
+  }
 }
 
 function checkAnswer() {
-  if (selectedChoice === null) return;
+  const q = filteredQs[currentIdx];
+  const isMulti = q.type === "Multiple Select";
 
-  const q         = filteredQs[currentIdx];
-  const correct   = q.answer;
-  const isCorrect = selectedChoice === correct;
+  if (!isMulti && selectedChoice === null) return;
+  if (isMulti && selectedChoices.length === 0) return;
 
-  document.querySelectorAll(".choice-btn").forEach(b => { b.disabled = true; });
-  document.querySelector(`.choice-btn:nth-child(${correct+1})`).classList.add("correct");
-  document.querySelector(`.choice-btn:nth-child(${correct+1})`).classList.remove("selected");
-  if (!isCorrect) {
-    document.querySelector(`.choice-btn:nth-child(${selectedChoice+1})`).classList.add("wrong");
-    document.querySelector(`.choice-btn:nth-child(${selectedChoice+1})`).classList.remove("selected");
+  const explanation = q.explanation || "";
+  const standard    = q.standard    || "";
+  const choices     = document.querySelectorAll(".choice-btn");
+  choices.forEach(b => { b.disabled = true; });
+
+  let isCorrect;
+
+  if (isMulti) {
+    const correctSet = q.answers; // array of correct indices
+    // Mark all correct answers green
+    correctSet.forEach(i => {
+      choices[i].classList.add("correct");
+      choices[i].classList.remove("selected");
+    });
+    // Mark wrong selections red
+    selectedChoices.forEach(i => {
+      if (!correctSet.includes(i)) {
+        choices[i].classList.add("wrong");
+        choices[i].classList.remove("selected");
+      }
+    });
+    // Full credit only if exact match
+    const sortedSelected = [...selectedChoices].sort().join(",");
+    const sortedCorrect  = [...correctSet].sort().join(",");
+    isCorrect = sortedSelected === sortedCorrect;
+    selectedChoices = [];
+  } else {
+    const correct = q.answer;
+    isCorrect = selectedChoice === correct;
+    choices[correct].classList.add("correct");
+    choices[correct].classList.remove("selected");
+    if (!isCorrect) {
+      choices[selectedChoice].classList.add("wrong");
+      choices[selectedChoice].classList.remove("selected");
+    }
+    selectedChoice = null;
   }
 
   if (isCorrect) score++;
@@ -815,12 +1097,11 @@ function checkAnswer() {
       <span class="feedback-icon">${isCorrect ? "✅" : "❌"}</span>
       <span class="feedback-label">${isCorrect ? "Correct!" : "Not quite."}</span>
     </div>
-    <p class="feedback-explain">${q.explanation || ""}</p>
-    ${q.standard ? `<p class="standard-tag">📌 MA STE Standard: ${q.standard}</p>` : ""}`;
+    <p class="feedback-explain">${explanation}</p>
+    ${standard ? `<p class="standard-tag">📌 MA STE Standard: ${standard}</p>` : ""}`;
 
   document.getElementById("btnCheck").style.display = "none";
   document.getElementById("btnNext").style.display  = "inline-block";
-  selectedChoice = null;
   updateProgress();
 }
 
