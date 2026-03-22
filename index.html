@@ -1358,54 +1358,6 @@ function showEndScreen() {
   document.getElementById("endScreen").style.display = "block";
 }
 
-// ══════════════════ DEMO HOTKEY ══════════════════
-// Shift+D — auto-fills random answers for all remaining questions and shows end screen
-// Only works when a practice test is active and questions are loaded
-function demoFill() {
-  // If not in tests mode, switch to it and select Test 1
-  if (activeMode !== 'tests' || !activePracticeTest) {
-    switchMode('tests');
-    selectTest('g6');
-    // Brief delay to let questions load before filling
-    setTimeout(demoFill, 100);
-    return;
-  }
-  if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
-
-  filteredQs.forEach((q, idx) => {
-    if (savedAnswers[idx]) return; // skip already answered
-    const isMulti   = q.type === 'Multiple Select';
-    const isCorrect = Math.random() > 0.45; // ~55% correct for realistic demo
-    let chosenIdx, chosenIndices, chosenText;
-
-    if (isMulti) {
-      // Randomly pick same or different set from correct answers
-      chosenIndices  = isCorrect
-        ? [...q.answers]
-        : q.answers.map(i => (i + 1) % q.choices.length); // offset wrong
-      chosenText     = chosenIndices.map(i => q.choices[i]).join('; ');
-      const sortedS  = [...chosenIndices].sort().join(',');
-      const sortedC  = [...q.answers].sort().join(',');
-      const realCorrect = sortedS === sortedC;
-      savedAnswers[idx] = { q, correct: realCorrect, chosenText, chosenIdx: null, chosenIndices };
-    } else {
-      chosenIdx  = isCorrect ? q.answer : (q.answer + 1 + Math.floor(Math.random() * 3)) % q.choices.length;
-      chosenText = q.choices[chosenIdx];
-      savedAnswers[idx] = { q, correct: chosenIdx === q.answer, chosenText, chosenIdx, chosenIndices: null };
-    }
-  });
-
-  showEndScreen();
-}
-
-document.addEventListener('keydown', e => {
-  // Demo hotkey: Ctrl+Shift+D (avoids Chrome's Cmd+number tab-switching shortcuts)
-  if (e.ctrlKey && e.shiftKey && e.key === 'D') {
-    e.preventDefault();
-    demoFill();
-  }
-});
-
 document.addEventListener("DOMContentLoaded", init);
 
 // ══════════════════ REPORT CARD PDF ══════════════════
