@@ -210,22 +210,22 @@
   <div id="panelTests" style="display:none;">
     <div class="test-cards">
       <div class="test-card" id="card-g6" onclick="selectTest('g6')">
-        <div class="test-card-emoji">🟣</div>
-        <div class="test-card-name">Test 1</div>
-        <div class="test-card-sub">Grade 6<br>Foundation</div>
-        <div class="test-card-count">20 QUESTIONS</div>
+        <div class="test-card-emoji">📝</div>
+        <div class="test-card-name">Practice Test 1</div>
+        <div class="test-card-sub">All Grades<br>Mixed Topics</div>
+        <div class="test-card-count">23 QUESTIONS</div>
       </div>
       <div class="test-card" id="card-g7" onclick="selectTest('g7')">
-        <div class="test-card-emoji">🟠</div>
-        <div class="test-card-name">Test 2</div>
-        <div class="test-card-sub">Grade 7<br>Building</div>
+        <div class="test-card-emoji">📝</div>
+        <div class="test-card-name">Practice Test 2</div>
+        <div class="test-card-sub">All Grades<br>Mixed Topics</div>
         <div class="test-card-count">22 QUESTIONS</div>
       </div>
       <div class="test-card" id="card-g8" onclick="selectTest('g8')">
-        <div class="test-card-emoji">🔵</div>
-        <div class="test-card-name">Test 3</div>
-        <div class="test-card-sub">Grade 8<br>MCAS-Ready</div>
-        <div class="test-card-count">25 QUESTIONS</div>
+        <div class="test-card-emoji">📝</div>
+        <div class="test-card-name">Practice Test 3</div>
+        <div class="test-card-sub">All Grades<br>Mixed Topics</div>
+        <div class="test-card-count">22 QUESTIONS</div>
       </div>
       <div class="test-card" id="card-full" onclick="selectTest('full')">
         <div class="test-card-emoji">⭐</div>
@@ -289,7 +289,7 @@ const QUESTIONS = [
 
   // ── GRADE 6 · LIFE SCIENCE ────────────────────────────────────────────────
 
-  { grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
     scenario:"A student examines two cells under a microscope. Cell A has a membrane-bound nucleus, mitochondria, and a cell membrane. Cell B has no nucleus, no mitochondria, and a cell wall made of peptidoglycan.",
     stem:"Which statement BEST describes the two cells?",
     choices:["Both cells are animal cells because they both have a cell membrane.","Cell A is a eukaryotic cell and Cell B is a prokaryotic cell.","Cell A is a prokaryotic cell because it has a nucleus.","Cell B is a eukaryotic cell because it has a cell wall."],
@@ -297,7 +297,7 @@ const QUESTIONS = [
     explanation:"Eukaryotic cells have a membrane-bound nucleus and organelles like mitochondria. Prokaryotic cells (like bacteria) lack both. Cell A matches eukaryotic; Cell B matches prokaryotic.",
     standard:"6.MS-LS1-1" },
 
-  { grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
     scenario:"The cell membrane controls what enters and leaves the cell. Water moves from areas of higher water concentration to lower water concentration through osmosis.",
     stem:"A red blood cell is placed in a very salty solution. What will MOST LIKELY happen?",
     choices:["Water will move into the cell, causing it to swell.","Water will move out of the cell, causing it to shrink.","Salt will move into the cell, causing it to burst.","Nothing — the membrane blocks all movement."],
@@ -305,14 +305,14 @@ const QUESTIONS = [
     explanation:"The salty solution has less water (higher solute) than inside the cell. Water exits the cell by osmosis toward the lower water concentration, causing the cell to shrink (crenation).",
     standard:"6.MS-LS1-2" },
 
-  { grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
     stem:"Which organelle converts food molecule energy into usable ATP for the cell?",
     choices:["Ribosome","Cell wall","Mitochondria","Vacuole"],
     answer:2,
     explanation:"Mitochondria perform cellular respiration, converting glucose and oxygen into ATP — the cell's energy currency. That's why they're called the 'powerhouse of the cell.'",
     standard:"6.MS-LS1-2" },
 
-  { grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
     scenario:"A plant cell and an animal cell are both eukaryotic but have key structural differences.",
     stem:"Which structure is found in a plant cell but NOT in an animal cell?",
     choices:["Mitochondria","Cell membrane","Nucleus","Chloroplast"],
@@ -320,30 +320,30 @@ const QUESTIONS = [
     explanation:"Chloroplasts, found only in plant cells, contain chlorophyll and are the site of photosynthesis. Both cell types have mitochondria, a cell membrane, and a nucleus.",
     standard:"6.MS-LS1-2" },
 
-  { grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
     stem:"What is the PRIMARY function of ribosomes?",
     choices:["Storing genetic information","Producing energy through cellular respiration","Synthesizing (building) proteins","Breaking down waste materials"],
     answer:2,
     explanation:"Ribosomes read mRNA instructions and link amino acids together to build proteins needed for nearly every cellular function.",
     standard:"6.MS-LS1-2" },
 
-  { grade:"6", domain:"ls", topic:"Characteristics of Life", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ls", topic:"Characteristics of Life", type:"Multiple Choice",
     scenario:"A student finds a small object in a tidal pool. It has a hard outer shell, does not move, and does not react to being touched.",
     stem:"Which question would be MOST useful for determining if the object is living or nonliving?",
-    choices:["Is the object made of carbon-based molecules?","Does the object use energy, grow, or respond to its environment over time?","Does the object have a smooth or rough texture?","Is the object the same color as the surrounding rocks?"],
+    choices:["Is the object made of carbon-based molecules like proteins or sugars?","Does the object use energy, grow, or respond to its environment?","Does the object have a smooth, rough, or layered surface texture?","Is the object the same color and shape as the surrounding rocks?"],
     answer:1,
     explanation:"The characteristics of life include using energy, growing, reproducing, and responding to stimuli. Testing whether the object does any of these is the most direct way to determine if it is living.",
     standard:"6.MS-LS1-1" },
 
-  { grade:"6", domain:"ls", topic:"Fossil Record", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ls", topic:"Fossil Record", type:"Multiple Choice",
     scenario:"Scientists found fossils of ancient sea creatures in rock layers at the top of the Appalachian Mountains. These organisms are not alive today.",
     stem:"Which conclusion is BEST supported by this evidence?",
-    choices:["Sea creatures can survive at high altitudes if conditions are right.","The Appalachian Mountains were once covered by a shallow sea, and those organisms went extinct.","Fossils can form only in mountainous regions.","Living sea creatures buried themselves in rock and died millions of years ago."],
+    choices:["Sea creatures can survive at high altitudes when conditions are favorable enough.","The area was once a shallow sea, and those marine organisms later went extinct.","Fossils can only form in dry, elevated mountain regions far from any coast.","Living sea creatures burrowed into the rock and gradually died millions of years ago."],
     answer:1,
     explanation:"Marine fossils in mountain rock layers indicate the area was once underwater. Their absence from living species indicates extinction — a key concept the fossil record documents.",
     standard:"6.MS-LS4-1" },
 
-  { grade:"6", domain:"ls", topic:"Fossil Record", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ls", topic:"Fossil Record", type:"Multiple Choice",
     scenario:"Trilobites appear in rock layers from ~521 million years ago and completely disappear in layers ~252 million years ago.",
     stem:"What does this fossil record pattern MOST LIKELY indicate?",
     choices:["Trilobites evolved into fish and still live in the ocean.","Trilobites went extinct approximately 252 million years ago.","The fossil record is incomplete and trilobites are still alive.","Trilobites only lived in fresh water."],
@@ -354,7 +354,7 @@ const QUESTIONS = [
 
   // ── GRADE 6 · PHYSICAL SCIENCE ───────────────────────────────────────────
 
-  { grade:"6", domain:"ps", topic:"Matter & Properties", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ps", topic:"Matter & Properties", type:"Multiple Choice",
     scenario:"A student pours water into containers of different shapes. She then places some water in a freezer overnight.",
     stem:"Which statement BEST describes water particle behavior when it freezes?",
     choices:["Particles gain energy and move farther apart.","Particles lose energy, slow down, and lock into a fixed arrangement.","Particles are destroyed and replaced with harder ones.","Particles stay the same but the container shrinks around them."],
@@ -362,14 +362,14 @@ const QUESTIONS = [
     explanation:"Cooling removes thermal energy. As liquid water freezes, particles lose energy, slow dramatically, and arrange into the rigid fixed structure of ice. The particles themselves don't change — only their energy and arrangement do.",
     standard:"6.MS-PS1-4(MA)" },
 
-  { grade:"6", domain:"ps", topic:"Matter & Properties", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ps", topic:"Matter & Properties", type:"Multiple Choice",
     stem:"A nail rusts, a candle burns, an ice cube melts, and paper is torn in half. Which TWO are examples of a CHEMICAL change?",
     choices:["The nail rusting and the candle burning","The ice cube melting and the nail rusting","The paper tearing and the ice cube melting","The candle burning and the paper tearing"],
     answer:0,
     explanation:"Chemical changes produce new substances: rusting converts iron into iron oxide; burning converts wax and oxygen into CO₂ and water. Melting and tearing are physical changes — the substance's identity remains the same.",
     standard:"6.MS-PS1-2" },
 
-  { grade:"6", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
     scenario:"A hockey puck slides across flat ice and gradually slows to a stop.",
     stem:"According to Newton's First Law, why did the puck slow down and stop?",
     choices:["The puck ran out of the energy given when it was hit.","An unbalanced force (friction) acted on the puck.","Moving objects always slow down — that is their natural state.","The puck's mass increased as it slid."],
@@ -377,7 +377,7 @@ const QUESTIONS = [
     explanation:"Newton's First Law: an object in motion stays in motion unless an unbalanced force acts on it. Friction from the ice is the unbalanced force that slows the puck. Without friction it would slide forever.",
     standard:"6.MS-PS2-1" },
 
-  { grade:"6", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
     scenario:"Two teams play tug-of-war. Team A pulls 200 N right; Team B pulls 200 N left.",
     stem:"What will happen to the rope, and why?",
     choices:["The rope moves toward Team A because they are on the right.","The rope remains stationary because the forces are balanced.","The rope moves toward Team B because pulling left is stronger.","The rope breaks because two forces acting on it is too much."],
@@ -388,7 +388,7 @@ const QUESTIONS = [
 
   // ── GRADE 6 · EARTH & SPACE SCIENCE ──────────────────────────────────────
 
-  { grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
     scenario:"The Moon reflects sunlight. As it orbits Earth, different portions of its lit half are visible, creating lunar phases.",
     stem:"During which phase is the Moon between Earth and the Sun, with its unlit side facing Earth?",
     choices:["Full Moon","New Moon","First Quarter Moon","Waning Gibbous Moon"],
@@ -396,14 +396,14 @@ const QUESTIONS = [
     explanation:"During a New Moon the Moon is between Earth and the Sun; its lit side faces away from Earth. We see only the dark side — so the Moon is invisible to us. This is when solar eclipses can occur.",
     standard:"6.MS-ESS1-1a" },
 
-  { grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
     stem:"Why don't solar eclipses happen every month during the New Moon phase?",
-    choices:["The Moon moves too fast during New Moon to cast a shadow.","The Moon's orbit is slightly tilted relative to Earth's orbit, so it usually passes above or below the Sun.","The Sun is much larger so the Moon's shadow never reaches Earth.","Solar eclipses only happen when Earth is closest to the Sun."],
+    choices:["The Moon travels too fast during the New Moon phase to cast any shadow on Earth.","The Moon's orbit is tilted, so it usually passes above or below the Sun from Earth's perspective.","The Sun is so much larger that the Moon's shadow can never physically reach Earth's surface.","Solar eclipses can only occur when Earth is at its closest orbital point to the Sun."],
     answer:1,
     explanation:"The Moon's orbital plane is tilted ~5° relative to the ecliptic. During most New Moons it passes slightly above or below the Sun as seen from Earth. Eclipses only occur when the New Moon happens near a node — where the two orbital planes intersect.",
     standard:"6.MS-ESS1-1a" },
 
-  { grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
     stem:"Which phenomenon is DIRECTLY caused by Earth's rotation on its axis?",
     choices:["The yearly cycle of seasons","The monthly cycle of Moon phases","The daily cycle of day and night","The 11-year cycle of solar activity"],
     answer:2,
@@ -413,10 +413,10 @@ const QUESTIONS = [
 
   // ── GRADE 6 · TECHNOLOGY & ENGINEERING ───────────────────────────────────
 
-  { grade:"6", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
     scenario:"A 6th grade class designs a device to protect a raw egg dropped from 3 meters. Their first prototype fails — the egg breaks.",
     stem:"What should the students do NEXT according to the engineering design process?",
-    choices:["Give up and try a completely different project.","Build the exact same device and drop it from a shorter height.","Use their observations to identify what failed, make improvements, and test the revised design.","Submit the failed design as final because they already followed the process once."],
+    choices:["Give up on this design and start a completely different project from scratch.","Build the exact same device again and drop it from a much shorter height.","Use their observations to find what failed, make changes, and test the revised design.","Submit the failed design as final because they already followed the design process once."],
     answer:2,
     explanation:"Engineering design is iterative. Failure provides data. Students should analyze what caused the failure, brainstorm improvements, redesign, rebuild, and test again — repeating until criteria are met.",
     standard:"6.MS-ETS1-3" },
@@ -424,7 +424,7 @@ const QUESTIONS = [
 
   // ── GRADE 7 · LIFE SCIENCE: BODY SYSTEMS ─────────────────────────────────
 
-  { grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     scenario:"The heart pumps blood through the pulmonary circuit (heart → lungs → heart) and the systemic circuit (heart → body → heart).",
     stem:"A red blood cell leaves the right ventricle. Which sequence CORRECTLY traces its next journey?",
     choices:["Aorta → body tissues → right atrium","Pulmonary artery → lungs → left atrium","Pulmonary vein → lungs → left ventricle","Coronary artery → heart muscle → right atrium"],
@@ -432,23 +432,23 @@ const QUESTIONS = [
     explanation:"Blood from the right ventricle flows through the pulmonary artery to the lungs, picks up O₂ and releases CO₂, then returns via the pulmonary veins to the left atrium.",
     standard:"7.MS-LS1-3(MA)" },
 
-  { grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     scenario:"A student's resting heart rate is 72 bpm. After running 5 minutes it rises to 148 bpm.",
     stem:"Which BEST explains why heart rate increases during exercise?",
-    choices:["The heart beats faster to remove excess carbon dioxide from storage.","Muscle cells need more O₂ and glucose, so the heart pumps faster to deliver them.","The lungs produce more blood during exercise.","Heart rate increases to reduce blood pressure."],
+    choices:["The heart beats faster to flush excess carbon dioxide out of storage.","Muscles need more oxygen and glucose, so the heart pumps faster to deliver both.","The lungs manufacture extra blood during exercise to supply the working muscles.","Heart rate rises specifically to lower pressure inside the major blood vessels."],
     answer:1,
     explanation:"During exercise, muscles increase cellular respiration and require more oxygen and glucose. The heart speeds up to deliver more oxygenated blood per minute to working muscles.",
     standard:"7.MS-LS1-3(MA)" },
 
-  { grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:2, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     scenario:"The digestive system breaks food into molecules small enough to be absorbed into the bloodstream.",
     stem:"Which BEST describes what happens to food from the mouth to the small intestine?",
-    choices:["Mechanically broken down in the mouth, chemically digested in the stomach, and further broken down and absorbed in the small intestine.","Only chemically digested in the mouth using bile, then stored in the stomach.","The stomach absorbs all nutrients; the small intestine eliminates waste.","Mechanical digestion happens only in the large intestine."],
+    choices:["Chewed in the mouth, broken down by stomach acid and enzymes, then absorbed in the small intestine.","Only chemically digested in the mouth using bile, then held in the stomach until needed.","The stomach absorbs all available nutrients, and the small intestine simply removes waste products.","Mechanical digestion takes place only in the large intestine after food leaves the stomach."],
     answer:0,
     explanation:"Digestion begins in the mouth (chewing + salivary enzymes). The stomach adds acid and enzymes. The small intestine completes digestion and is the primary site of nutrient absorption.",
     standard:"7.MS-LS1-3(MA)" },
 
-  { grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     scenario:"Gas exchange occurs in tiny alveoli surrounded by capillaries.",
     stem:"Which feature of the alveoli makes them MOST efficient for gas exchange?",
     choices:["Thick muscular walls that actively pump gases","Large size that traps gases inside the lungs","Extremely thin walls and enormous total surface area allowing rapid diffusion","Location at the top of the lungs far from the heart"],
@@ -456,7 +456,7 @@ const QUESTIONS = [
     explanation:"Alveoli walls are one cell thick (minimal diffusion distance). ~300 million alveoli create a surface area roughly the size of a tennis court — maximizing the rate of O₂/CO₂ exchange between air and blood.",
     standard:"7.MS-LS1-3(MA)" },
 
-  { grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     stem:"Which BEST describes homeostasis?",
     choices:["The process by which organisms reproduce to maintain population size","The ability to maintain stable internal conditions despite external changes","The increase in body size as organisms grow","The process of adapting to new environments over generations"],
     answer:1,
@@ -466,7 +466,7 @@ const QUESTIONS = [
 
   // ── GRADE 7 · LIFE SCIENCE: ECOSYSTEMS ───────────────────────────────────
 
-  { grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:2, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"In a meadow: grasses are eaten by grasshoppers, eaten by frogs, eaten by hawks.",
     stem:"Which organism is the PRIMARY PRODUCER in this food chain?",
     choices:["Grasshopper, because it eats the most","Frog, because it is in the middle","Grass, because it captures energy from sunlight","Hawk, because it is at the top"],
@@ -474,15 +474,15 @@ const QUESTIONS = [
     explanation:"Producers capture solar energy through photosynthesis and convert it into organic matter. All consumers in the chain depend on this energy. Grass is the sole primary producer here.",
     standard:"7.MS-LS2-3" },
 
-  { grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"Scientists tracked rabbit and fox populations over 20 years. When rabbits increased, foxes increased soon after. When foxes increased, rabbits then decreased.",
     stem:"Which BEST explains this pattern?",
-    choices:["Foxes teach rabbits to avoid predators, helping rabbit populations grow.","Rabbits and foxes compete for the same food source.","More rabbits feed more foxes; more foxes reduce rabbits — a predator-prey cycle.","Climate change is causing both populations to fluctuate."],
+    choices:["Foxes actually teach rabbits predator-avoidance skills, helping the rabbit population grow.","Rabbits and foxes compete directly with each other for the same grassy food sources.","More rabbits support more foxes; rising fox numbers then bring rabbit populations back down.","Climate change is creating unpredictable fluctuations in both animal populations simultaneously."],
     answer:2,
     explanation:"Classic predator-prey dynamics: abundant prey supports predator growth; rising predator numbers reduce prey; fewer prey then cause predator decline, allowing prey to recover — repeating cycle.",
     standard:"7.MS-LS2-4(MA)" },
 
-  { grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"Removing sea otters caused sea urchins to explode in number, which ate most of the kelp, turning the reef into an 'urchin barren.'",
     stem:"This BEST illustrates which ecological concept?",
     choices:["Photosynthesis — kelp needs more light when urchins are removed","A trophic cascade — removing one species triggers changes throughout the food web","Mutualism — sea otters and sea urchins help each other","Natural selection — sea urchins evolved to eat kelp after otters left"],
@@ -493,7 +493,7 @@ const QUESTIONS = [
 
   // ── GRADE 7 · LIFE SCIENCE: HEREDITY ─────────────────────────────────────
 
-  { grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
+  { test:2, grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
     scenario:"In pea plants, yellow seeds (Y) is dominant over green seeds (y). Two plants with genotype Yy are crossed.",
     stem:"What percentage of their offspring will MOST LIKELY have green seeds?",
     choices:["0% — dominant alleles always mask recessive ones in all offspring","25% — only yy offspring will have green seeds","50% — half of all offspring will be green","75% — most offspring will show the recessive trait"],
@@ -501,17 +501,17 @@ const QUESTIONS = [
     explanation:"Punnett square for Yy × Yy: YY (25%), Yy (50%), yy (25%). Only yy plants show green — they have no dominant Y allele to mask it. So 25% will have green seeds.",
     standard:"7.MS-LS3-2" },
 
-  { grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
     stem:"Which BEST describes the relationship between genes, DNA, and chromosomes?",
-    choices:["Chromosomes are made of genes; genes are made of cells","DNA contains genes; genes are DNA segments that code for proteins; DNA is packaged into chromosomes","Genes produce chromosomes; chromosomes produce DNA","DNA and chromosomes are the same structure; genes are in the cytoplasm"],
+    choices:["Chromosomes are composed entirely of genes, and every gene is itself made of cells.","Genes are segments of DNA that code for proteins; DNA is tightly coiled into chromosomes.","Genes produce chromosomes, which in turn produce and contain all of the cell's DNA.","DNA and chromosomes are the same structure; genes are separate molecules found in the cytoplasm."],
     answer:1,
     explanation:"Chromosomes are made of tightly wound DNA. Genes are specific segments of DNA that carry instructions for building proteins. The hierarchy is: chromosome → DNA → gene → protein.",
     standard:"7.MS-LS3-1" },
 
-  { grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
     scenario:"Identical twins share 100% of their DNA, yet one twin may develop Type 2 diabetes while the other does not.",
     stem:"What does this BEST suggest about traits?",
-    choices:["DNA tests for identical twins must be inaccurate if they show different health outcomes.","Traits are shaped by both genetic information AND environmental factors like diet and lifestyle.","One twin must have developed mutations after birth.","Diseases are only caused by viruses, not genetics or environment."],
+    choices:["DNA tests for identical twins must be producing inaccurate results if health outcomes differ.","Traits are shaped by both genetic information and environmental factors like diet and lifestyle.","One twin must have developed entirely new genetic mutations sometime after the moment of birth.","All diseases result exclusively from viral infections and never from genetics or personal lifestyle."],
     answer:1,
     explanation:"Identical genomes, different outcomes. Differences in health must be explained by environmental factors (diet, exercise, stress). This demonstrates that both nature (genes) and nurture (environment) shape traits.",
     standard:"7.MS-LS3-2" },
@@ -519,15 +519,15 @@ const QUESTIONS = [
 
   // ── GRADE 7 · EARTH SCIENCE: PLATE TECTONICS ─────────────────────────────
 
-  { grade:"7", domain:"ess", topic:"Plate Tectonics", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ess", topic:"Plate Tectonics", type:"Multiple Choice",
     scenario:"In 1912, Wegener proposed the continents were once joined as Pangaea and cited matching fossils, similar rock formations, and the coastline fit as evidence.",
     stem:"Which evidence BEST supports continental drift?",
-    choices:["Identical weather patterns on continents currently far apart","Fossils of the same land-dwelling species found on continents now separated by vast oceans","All continents have mountain ranges near their centers","All continents are moving toward each other today"],
+    choices:["Identical seasonal weather patterns observed on widely separated continents around the world","Matching fossils of land-dwelling species found on continents now separated by wide oceans","Every single continent has its own central mountain range running through its interior","All of the continents are currently drifting steadily toward a single convergence point"],
     answer:1,
     explanation:"Identical fossils of land-dwelling organisms on widely separated continents is strong evidence those landmasses were once joined. The animals couldn't have crossed open ocean — the continents must have been connected.",
     standard:"7.MS-ESS2-3" },
 
-  { grade:"7", domain:"ess", topic:"Plate Tectonics", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ess", topic:"Plate Tectonics", type:"Multiple Choice",
     scenario:"Earth's lithosphere is broken into tectonic plates that move a few centimeters per year.",
     stem:"At a convergent boundary where an oceanic plate meets a continental plate, what MOST LIKELY forms?",
     choices:["A mid-ocean ridge where new crust is created","A rift valley where crust is pulled apart","A mountain range or volcanic arc as the oceanic plate subducts","A transform fault where plates slide horizontally"],
@@ -538,7 +538,7 @@ const QUESTIONS = [
 
   // ── GRADE 7 · PHYSICAL SCIENCE: CHEMISTRY ────────────────────────────────
 
-  { grade:"7", domain:"ps", topic:"Chemical Reactions", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ps", topic:"Chemical Reactions", type:"Multiple Choice",
     scenario:"A student mixes baking soda and vinegar. Bubbles form rapidly, the mixture gets slightly cooler, and new substances are produced.",
     stem:"Which evidence BEST indicates a chemical reaction occurred?",
     choices:["The mixture turned liquid — liquids are always products of chemical reactions.","New substances with different properties formed, and the temperature changed.","The baking soda dissolved — dissolving is always a chemical change.","Bubbles formed — bubbles always indicate two liquids mixing."],
@@ -546,7 +546,7 @@ const QUESTIONS = [
     explanation:"Key signs of a chemical reaction: formation of new substances, temperature change, gas production, color change, or precipitate. Here, CO₂ gas formed, temperature dropped, and original substances were converted — multiple lines of evidence for a chemical reaction.",
     standard:"7.MS-PS1-2" },
 
-  { grade:"7", domain:"ps", topic:"Chemical Reactions", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ps", topic:"Chemical Reactions", type:"Multiple Choice",
     scenario:"A student reacts 24 g of magnesium with 16 g of oxygen in a closed container.",
     stem:"According to the Law of Conservation of Mass, what is the mass of magnesium oxide produced?",
     choices:["16 g — only oxygen becomes part of the product","24 g — only magnesium becomes part of the product","40 g — total reactant mass equals total product mass","8 g — mass is lost as heat during the reaction"],
@@ -557,10 +557,10 @@ const QUESTIONS = [
 
   // ── GRADE 7 · TECHNOLOGY & ENGINEERING ───────────────────────────────────
 
-  { grade:"7", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
     scenario:"A city floods because its storm drains are overwhelmed. Engineers consider: (1) larger concrete drains, (2) permeable pavement, (3) green roofs with plants.",
     stem:"A student argues all three solutions should be tested before choosing. Which BEST supports this?",
-    choices:["Testing all three wastes money; just pick the most popular option.","Comparing multiple solutions lets engineers gather data on trade-offs and select the best option.","Only one solution can be correct, so testing more than one is unnecessary.","The city should just wait for drought conditions."],
+    choices:["Testing all three designs wastes money — engineers should simply choose the most popular option.","Comparing solutions gives engineers data on trade-offs, leading to a more informed final decision.","Since only one solution can ever be correct, testing more than one design is entirely unnecessary.","The city should simply wait for a natural dry period instead of investing in any engineering solution."],
     answer:1,
     explanation:"Engineering design requires systematically comparing solutions against all criteria and constraints. Testing multiple options reveals trade-offs and generates evidence — not guesswork — for the best choice.",
     standard:"7.MS-ETS1-3" },
@@ -568,7 +568,7 @@ const QUESTIONS = [
 
   // ── GRADE 8 · LIFE SCIENCE: EVOLUTION ────────────────────────────────────
 
-  { grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
     scenario:"In a population of mice on dark soil, some have dark fur, some have light fur. Owls spot light-furred mice more easily against the dark soil.",
     stem:"Over many generations, what change would MOST LIKELY result from natural selection?",
     choices:["The mice would learn to change their fur color to match the soil.","The proportion of dark-furred mice would increase because they survive and reproduce more.","All mice would develop dark fur within a few weeks.","The owl population would decrease because mice become harder to find."],
@@ -576,33 +576,33 @@ const QUESTIONS = [
     explanation:"Natural selection acts on heritable variation. Dark-furred mice survive and reproduce at higher rates on dark soil (better camouflage). Over generations, their alleles become more common. This is not a learned change — it's a shift in population allele frequency.",
     standard:"8.MS-LS4-4" },
 
-  { grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
     scenario:"Scientists find that human and chimpanzee DNA sequences are ~98–99% identical.",
     stem:"What does this BEST support?",
-    choices:["Humans and chimpanzees are the same species and can interbreed.","Humans and chimpanzees share a common ancestor and are closely related.","DNA comparisons are unreliable tools for studying evolution.","Chimpanzees will eventually evolve into humans."],
+    choices:["Humans and chimpanzees belong to the same species and are capable of interbreeding.","Humans and chimpanzees descended from a shared common ancestor and are closely related.","DNA sequence comparisons are considered unreliable tools for drawing conclusions about evolution.","Given enough time, chimpanzees will eventually evolve and transform into modern humans."],
     answer:1,
     explanation:"DNA similarity reflects evolutionary relatedness. ~98–99% similarity indicates a relatively recent common ancestor. The more similar two species' DNA, the more closely related they are evolutionarily.",
     standard:"8.MS-LS4-2" },
 
-  { grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
     scenario:"Galápagos finches Darwin observed have beaks of many shapes — thick seed-cracking beaks to long probing beaks — depending on their island.",
     stem:"Which BEST explains how this diversity of beak shapes developed?",
-    choices:["Each finch chose a beak shape that suited its preferred food.","On islands with different food sources, finches with suited beaks survived and reproduced more, leading to different shapes over generations.","Finches' beaks changed shape during their lifetime based on what they ate.","One pair of finches produced offspring with every possible beak shape."],
+    choices:["Each individual finch deliberately selected a beak shape that best suited its preferred food.","Natural selection favored different beak shapes on each island, producing distinct finch populations over time.","Finch beaks gradually reshaped themselves during each bird's own lifetime based on its diet.","A single ancestral finch pair produced offspring with every possible beak shape fully formed."],
     answer:1,
     explanation:"Natural selection acting on variation: finches with beak shapes matching available food on each island survived and reproduced more. Over generations those shapes became dominant on each island — adaptive radiation.",
     standard:"8.MS-LS4-4" },
 
-  { grade:"8", domain:"ls", topic:"Classification", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ls", topic:"Classification", type:"Multiple Choice",
     stem:"A new multicellular organism has chitin cell walls, cannot make its own food, and reproduces with spores. Which kingdom does it MOST LIKELY belong to?",
     choices:["Plantae — it has a cell wall","Animalia — it cannot make its own food","Fungi — chitin cell walls and spore reproduction","Protista — multicellular and uses spores"],
     answer:2,
     explanation:"Fungi have chitin cell walls (unlike cellulose in plants), are heterotrophic, and reproduce by spores. All three features together identify this organism as a fungus.",
     standard:"8.MS-LS4-1" },
 
-  { grade:"8", domain:"ls", topic:"Photosynthesis & Respiration", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ls", topic:"Photosynthesis & Respiration", type:"Multiple Choice",
     scenario:"Photosynthesis: CO₂ + H₂O + light → glucose + O₂\nCellular Respiration: glucose + O₂ → CO₂ + H₂O + ATP",
     stem:"Which CORRECTLY describes the relationship between these two processes?",
-    choices:["Unrelated processes found only in different kingdoms of life.","They are opposite processes — the products of one are the reactants of the other.","Cellular respiration only occurs in animals; photosynthesis only in plants.","Both processes require light energy to produce glucose."],
+    choices:["These are completely unrelated processes occurring only in entirely separate kingdoms of life.","They run in reverse — the products of one serve as the reactants of the other.","Cellular respiration occurs only in animals, while photosynthesis occurs exclusively in plants.","Both processes require direct sunlight as an energy source in order to produce glucose molecules."],
     answer:1,
     explanation:"Photosynthesis and cellular respiration are essentially reverse reactions, cycling matter (carbon, oxygen, hydrogen) through ecosystems. Both plants and animals perform cellular respiration; only photosynthetic organisms perform photosynthesis.",
     standard:"8.MS-LS1-7" },
@@ -610,7 +610,7 @@ const QUESTIONS = [
 
   // ── GRADE 8 · LIFE SCIENCE: NERVOUS SYSTEM ───────────────────────────────
 
-  { grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
     scenario:"Sensory neurons carry signals from the body to the brain. Interneurons process information in the brain/spinal cord. Motor neurons carry signals from brain to muscles.",
     stem:"A student touches a hot pan. Which sequence CORRECTLY describes the reflex arc?",
     choices:["Motor neuron → interneuron → sensory neuron → muscle contracts","Sensory neuron → interneuron (spinal cord) → motor neuron → muscle contracts","Interneuron → sensory neuron → brain → muscle relaxes","Muscle → motor neuron → brain → sensory neuron → pain response"],
@@ -618,15 +618,15 @@ const QUESTIONS = [
     explanation:"Reflex arc: sensory neuron detects stimulus → signal reaches spinal cord → interneuron processes → motor neuron signals muscle → muscle contracts. This loop bypasses the brain initially, which is why the withdrawal happens before you consciously feel the pain.",
     standard:"8.MS-LS1-8(MA)" },
 
-  { grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
     scenario:"When an electrical signal reaches the end of a neuron, it triggers release of chemical messengers into a tiny gap called a synapse.",
     stem:"What is the role of neurotransmitters at a synapse?",
-    choices:["They carry electrical signals directly through bone to muscles.","They are released into the synapse to carry a signal from one neuron to the next.","They are stored in the nucleus and activate DNA replication.","They absorb signals to slow responses."],
+    choices:["They travel through bone tissue, carrying electrical signals directly to the target muscles.","They cross the synapse, carrying chemical signals from one neuron to the next neuron.","They are stored inside the cell nucleus, where they activate and trigger DNA replication.","They absorb and neutralize incoming nerve signals, which significantly slows the body's responses."],
     answer:1,
     explanation:"Neurons can't make direct electrical contact across synapses. Neurotransmitters are released into the gap, diffuse across, and bind to receptors on the next neuron — transmitting the signal chemically before it continues as electrical impulse.",
     standard:"8.MS-LS1-8(MA)" },
 
-  { grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
     stem:"Which brain region is primarily responsible for conscious thought, decision-making, and voluntary movement?",
     choices:["Cerebellum — coordinates balance and fine motor control","Brainstem — regulates heartbeat and breathing","Cerebrum — conscious thought and voluntary actions","Hypothalamus — regulates body temperature and hunger"],
     answer:2,
@@ -636,26 +636,26 @@ const QUESTIONS = [
 
   // ── GRADE 8 · EARTH & SPACE SCIENCE ──────────────────────────────────────
 
-  { grade:"8", domain:"ess", topic:"Seasons & Earth's Tilt", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ess", topic:"Seasons & Earth's Tilt", type:"Multiple Choice",
     scenario:"Earth's axis is tilted ~23.5° relative to its orbital plane and maintains this tilt direction throughout its orbit.",
     stem:"Which BEST explains why Massachusetts has summer in June and winter in December?",
-    choices:["Earth is much closer to the Sun in June and farther away in December.","In June, the northern axis tilts toward the Sun, causing more direct sunlight and longer days; in December it tilts away.","The Sun produces more heat in June based on sunspot activity.","In summer the atmosphere is thinner, allowing more heat through."],
+    choices:["Earth travels much closer to the Sun in June and much farther away in December.","Earth's northern axis tilts toward the Sun in summer, producing more direct sunlight and longer days.","The Sun's sunspot activity naturally peaks every June, generating significantly more heat for Earth.","Earth's atmosphere becomes measurably thinner each summer, allowing more solar radiation to reach the surface."],
     answer:1,
     explanation:"Seasons are caused by axial tilt, NOT distance from the Sun (Earth is actually closer to the Sun in January). When the Northern Hemisphere tilts toward the Sun in summer, sunlight is more direct (concentrated) and days are longer — both increase heating. The reverse occurs in winter.",
     standard:"8.MS-ESS1-1b" },
 
-  { grade:"8", domain:"ess", topic:"Ocean & Climate", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ess", topic:"Ocean & Climate", type:"Multiple Choice",
     scenario:"The Gulf Stream flows from the Gulf of Mexico north along the U.S. East Coast, then across the North Atlantic toward Western Europe.",
     stem:"How does the Gulf Stream affect the climate of Western Europe?",
-    choices:["It brings cold nutrient-rich water that makes Western Europe colder than expected.","It carries warm water and heat energy that keeps Western Europe significantly warmer than regions at the same latitude in North America.","It increases Western European rainfall by pulling moisture from the Atlantic.","It has no effect because ocean currents only affect sea surface temperatures."],
+    choices:["It transports cold, nutrient-rich water northward, making Western Europe colder than regions nearby.","It carries warm tropical water that releases heat into the atmosphere, warming all of Western Europe.","It draws extra moisture from the Atlantic Ocean, substantially increasing rainfall across Western Europe.","It has absolutely no measurable effect, since ocean currents only influence sea surface temperatures."],
     answer:1,
     explanation:"The Gulf Stream transports warm tropical water northward, releasing heat to the atmosphere. Western European cities like London (same latitude as parts of Canada) enjoy much milder climates largely because of this current.",
     standard:"8.MS-ESS2-6" },
 
-  { grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Choice",
     scenario:"Burning fossil fuels releases CO₂, a greenhouse gas that traps heat radiating from Earth's surface.",
     stem:"Which BEST describes the relationship between fossil fuel use and global climate?",
-    choices:["Burning fossil fuels produces oxygen, which heats the atmosphere.","Increased CO₂ enhances the greenhouse effect, trapping more heat and raising average global temperatures.","Fossil fuels only affect local air quality with no global climate impact.","Burning fossil fuels cools the atmosphere by using up heat in combustion."],
+    choices:["Burning fossil fuels releases oxygen into the air, which then heats the surrounding atmosphere.","More CO₂ strengthens the greenhouse effect, trapping additional heat and raising global temperatures.","Fossil fuels affect only local air quality in nearby cities with no broader climate impact.","Burning fossil fuels actually cools the atmosphere by consuming large amounts of heat during combustion."],
     answer:1,
     explanation:"CO₂ lets sunlight through but absorbs outgoing infrared radiation from Earth. More CO₂ from burning fossil fuels traps more heat — amplifying the natural greenhouse effect and driving global temperature increases.",
     standard:"8.MS-ESS3-5" },
@@ -663,7 +663,7 @@ const QUESTIONS = [
 
   // ── GRADE 8 · PHYSICAL SCIENCE: ENERGY ───────────────────────────────────
 
-  { grade:"8", domain:"ps", topic:"Energy", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ps", topic:"Energy", type:"Multiple Choice",
     scenario:"A roller coaster at the top of a hill has maximum gravitational potential energy.",
     stem:"As it rolls down and accelerates, what energy transformation occurs?",
     choices:["Kinetic energy converts to potential energy.","Chemical energy converts to electrical energy.","Gravitational potential energy converts to kinetic energy.","Thermal energy converts to gravitational potential energy."],
@@ -671,10 +671,10 @@ const QUESTIONS = [
     explanation:"At the peak: maximum potential energy, minimum kinetic. Descending: height decreases, speed increases — potential converts to kinetic. Total mechanical energy is conserved (ignoring friction).",
     standard:"8.MS-PS3-2" },
 
-  { grade:"8", domain:"ps", topic:"Energy", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ps", topic:"Energy", type:"Multiple Choice",
     scenario:"A campfire converts chemical energy in wood into heat and light.",
     stem:"Which BEST applies the Law of Conservation of Energy to this situation?",
-    choices:["Energy is created by the campfire — that's why heat and light appear.","Chemical energy in wood converts into thermal and light energy; total energy in the system remains constant.","The campfire destroys energy when wood burns, which is why the wood disappears.","Only heat energy counts; light energy is not real energy."],
+    choices:["Energy is newly created by the campfire — that is precisely why heat and light both appear.","The wood's chemical energy converts into heat and light, with total energy in the system unchanged.","The campfire permanently destroys energy during combustion, which explains why the wood disappears.","Only thermal heat energy counts here; the visible light produced by the fire is not true energy."],
     answer:1,
     explanation:"Energy cannot be created or destroyed. The chemical potential energy in wood's molecular bonds is released during combustion, converting into thermal and radiant energy. Total energy is conserved — it just changes form.",
     standard:"8.MS-PS3-1" },
@@ -682,7 +682,7 @@ const QUESTIONS = [
 
   // ── GRADE 8 · PHYSICAL SCIENCE: FORCES ───────────────────────────────────
 
-  { grade:"8", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
     scenario:"A student pushes a 10 kg box across a smooth floor with 20 N of force. Newton's Second Law: F = ma.",
     stem:"What is the acceleration of the box?",
     choices:["0.5 m/s²","2 m/s²","30 m/s²","200 m/s²"],
@@ -690,7 +690,7 @@ const QUESTIONS = [
     explanation:"a = F ÷ m = 20 N ÷ 10 kg = 2 m/s². Units check: N = kg·m/s², so N/kg = m/s².",
     standard:"8.MS-PS2-2" },
 
-  { grade:"8", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
     scenario:"A bowling ball and a tennis ball are dropped from the same height at the same time on the Moon, where there is no atmosphere.",
     stem:"Which ball will hit the ground first?",
     choices:["The bowling ball — gravity pulls harder on heavier objects.","The tennis ball — it has less air resistance.","Both balls hit at exactly the same time.","Neither falls because there is no gravity on the Moon."],
@@ -701,18 +701,18 @@ const QUESTIONS = [
 
   // ── GRADE 8 · PHYSICAL SCIENCE: WAVES ────────────────────────────────────
 
-  { grade:"8", domain:"ps", topic:"Waves & Sound", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ps", topic:"Waves & Sound", type:"Multiple Choice",
     scenario:"Sound waves require a medium to travel. Light waves can travel through a vacuum.",
     stem:"An astronaut hits two metal objects together in space. A watching teammate would NOT hear it because:",
-    choices:["Sound waves travel too slowly in space.","Sound requires a medium (matter) to travel through, and space is nearly a vacuum.","The astronaut's helmet absorbs all sound waves.","Light moves faster than sound, so the light arrives but the sound does not."],
+    choices:["Sound waves travel far too slowly through space to ever reach the spacecraft window.","Sound requires matter to travel through as a medium, and space is nearly a complete vacuum.","The thick material of the astronaut's helmet absorbs every outgoing sound wave completely.","Since light travels faster than sound, the visual impact arrives but the sound wave never does."],
     answer:1,
     explanation:"Sound is a mechanical wave needing particles to compress and expand. Space is nearly a perfect vacuum — almost no matter. Without a medium, sound cannot propagate. The teammate sees the collision but hears nothing.",
     standard:"8.MS-PS4-2" },
 
-  { grade:"8", domain:"ps", topic:"Waves & Light", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ps", topic:"Waves & Light", type:"Multiple Choice",
     scenario:"White light passing through a prism separates into a rainbow of colors.",
     stem:"What causes white light to separate into colors through a prism?",
-    choices:["The prism adds new colors not present in white light.","Different wavelengths travel at slightly different speeds in glass, causing them to bend by different amounts.","The prism filters out some colors and reflects others back.","White light separates only when it contacts material with red, green, and blue pigments."],
+    choices:["The prism chemically generates new colors that were never originally present in white light.","Different wavelengths slow by slightly different amounts in glass, so each bends at a different angle.","The prism selectively absorbs certain wavelengths and reflects the remaining visible colors back outward.","White light only separates when it passes through material containing red, green, and blue pigments."],
     answer:1,
     explanation:"White light contains all visible wavelengths. Different wavelengths slow by slightly different amounts in glass and therefore refract (bend) at different angles — dispersion. Violet bends most; red bends least. The prism separates existing colors; it doesn't create them.",
     standard:"8.MS-PS4-2" },
@@ -720,7 +720,7 @@ const QUESTIONS = [
 
   // ── GRADE 8 · PHYSICAL SCIENCE: ELECTRICITY ──────────────────────────────
 
-  { grade:"8", domain:"ps", topic:"Electricity & Circuits", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ps", topic:"Electricity & Circuits", type:"Multiple Choice",
     scenario:"A student adds a second identical light bulb in parallel to a 9V battery circuit (both bulbs connect directly to the battery).",
     stem:"What MOST LIKELY happens to the brightness of the first bulb?",
     choices:["It dims — voltage is shared between the two bulbs.","It gets brighter — more bulbs create more total energy.","It stays the same — each bulb receives the full battery voltage.","Both bulbs go out — the circuit overloads."],
@@ -731,18 +731,18 @@ const QUESTIONS = [
 
   // ── GRADE 8 · TECHNOLOGY & ENGINEERING ───────────────────────────────────
 
-  { grade:"8", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
     scenario:"Engineers designing a biodegradable water bottle must meet: holds ≥500 mL, breaks down in nature within 2 years, costs <$0.50 to make, survives normal use. Their prototype breaks down in 18 months, costs $0.75, and holds 400 mL.",
     stem:"Which step should the team take NEXT?",
-    choices:["Declare failure and start over completely.","Ship the prototype as-is — it meets most criteria.","Analyze unmet criteria, identify design changes, and build a revised prototype to test.","Skip redesign because breakdown time already meets its criterion."],
+    choices:["Declare the entire project a complete failure and immediately start over from scratch.","Ship the current prototype as-is since it already satisfies most of the required design criteria.","Identify which criteria failed, make targeted design changes, and test a revised prototype.","Skip the redesign phase entirely because the breakdown time criterion is already being met."],
     answer:2,
     explanation:"Engineering design is iterative. Failure is informative, not final. The team should identify specific design changes to fix cost and volume, rebuild, and test again — repeating until all criteria are met.",
     standard:"8.MS-ETS1-4" },
 
-  { grade:"8", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
     scenario:"An engineer has three bridge designs and these constraints: budget ≤$2M, must support trucks up to 40 tons, must be done in ≤18 months.",
     stem:"Which approach BEST describes how to select among the options?",
-    choices:["Choose the most expensive — higher cost always means better quality.","Choose the design that only meets minimum truck weight to save money.","Evaluate each design against ALL criteria and constraints, then select the best overall fit.","Choose the fastest design regardless of cost or capacity."],
+    choices:["Choose the most expensive design, since a higher price tag always indicates better overall quality.","Select only the design that meets the bare minimum truck weight requirement in order to save money.","Evaluate each design against all criteria and constraints, then select the best overall fit.","Choose whichever design can be built the fastest, regardless of its total cost or load capacity."],
     answer:2,
     explanation:"Engineering design requires evaluating solutions against all criteria and constraints together. No single factor dominates — the best solution satisfies all requirements, and trade-offs must be explicitly considered and documented.",
     standard:"8.MS-ETS1-2" },
@@ -755,7 +755,7 @@ const QUESTIONS = [
   // ══════════════════════════════════════════════
 
   // G6 PS — Wave amplitude & energy (6.PS.4.1)
-  { grade:"6", domain:"ps", topic:"Waves & Energy", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ps", topic:"Waves & Energy", type:"Multiple Choice",
     scenario:"Two waves are drawn on a graph. Wave A has tall, widely spaced peaks. Wave B has short, closely spaced peaks. Both waves travel through the same medium.",
     stem:"Which statement BEST compares the energy carried by the two waves?",
     choices:[
@@ -769,33 +769,33 @@ const QUESTIONS = [
     standard:"6.MS-PS4-1" },
 
   // G6 ESS — Moon phases cause (6.ESS.1.1)
-  { grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ess", topic:"Earth–Sun–Moon System", type:"Multiple Choice",
     stem:"Which BEST explains why the Moon appears to change shape over the course of a month?",
     choices:[
-      "The Moon physically changes its shape as it orbits Earth.",
-      "Earth's shadow falls on different parts of the Moon each night.",
-      "The Moon reflects sunlight, and as it orbits Earth, different portions of its lit half are visible from Earth.",
-      "The Sun produces different amounts of light depending on the season."
+      "The Moon physically changes its actual shape as it travels around Earth each month.",
+      "Earth's shadow falls on a different portion of the Moon's surface every single night.",
+      "The Moon reflects sunlight, and its orbit changes which portion of the lit half faces Earth.",
+      "The Sun naturally produces different amounts of light output depending on the current season."
     ],
     answer:2,
     explanation:"The Moon does not produce its own light — it reflects sunlight. As the Moon orbits Earth, the angle between the Sun, Moon, and Earth changes. This causes us to see different fractions of the Moon's sunlit half, creating the appearance of changing phases.",
     standard:"6.MS-ESS1-1a" },
 
   // G6 ESS — Milky Way galaxy scale (6.ESS.1.5)
-  { grade:"6", domain:"ess", topic:"The Universe & Scale", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ess", topic:"The Universe & Scale", type:"Multiple Choice",
     stem:"Which statement BEST describes the Milky Way galaxy?",
     choices:[
-      "The Milky Way is another name for our solar system, containing the Sun and its eight planets.",
-      "The Milky Way is a galaxy containing billions of stars, and our Sun is one of those stars located in one of its spiral arms.",
-      "The Milky Way is the name for the universe, which contains only one galaxy.",
-      "The Milky Way consists of the Sun, Moon, and the planets in our solar system."
+      "The Milky Way is simply another name for our solar system, which contains the Sun and eight planets.",
+      "The Milky Way is a spiral galaxy with billions of stars; our Sun is located in one outer arm.",
+      "The Milky Way is the scientific name for the entire universe, which contains only a single galaxy.",
+      "The Milky Way contains only our Sun, Moon, and the eight planets that orbit it."
     ],
     answer:1,
     explanation:"The Milky Way is our home galaxy — a spiral galaxy containing an estimated 200–400 billion stars. Our Sun is just one of those stars, located roughly two-thirds of the way out from the center in one of the spiral arms. The Milky Way is just one of hundreds of billions of galaxies in the observable universe.",
     standard:"6.MS-ESS1-5" },
 
   // G6 ESS — Rock layers & relative dating (6.ESS.1.4)
-  { grade:"6", domain:"ess", topic:"Rock Layers & Earth History", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ess", topic:"Rock Layers & Earth History", type:"Multiple Choice",
     scenario:"A geologist examines a cliff face showing five horizontal rock layers. Layer A is at the top. Layer B is below A. Layer C is below B. Layer D is below C. Layer E is at the bottom.",
     stem:"According to the principle of superposition, which layer is the OLDEST?",
     choices:[
@@ -809,7 +809,7 @@ const QUESTIONS = [
     standard:"6.MS-ESS1-4" },
 
   // G7 LS — Ecological relationship vocabulary (7.LS.2.2)
-  { grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:2, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"In a grassland ecosystem, lions and cheetahs both hunt zebras. Neither predator attacks the other, but their shared need for zebra prey means that more kills by one predator leaves less food for the other.",
     stem:"Which term BEST describes the relationship between lions and cheetahs in this ecosystem?",
     choices:[
@@ -823,35 +823,35 @@ const QUESTIONS = [
     standard:"7.MS-LS2-2" },
 
   // G7 LS — Population graph analysis (7.LS.2.1)
-  { grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"A scientist tracked the populations of snowshoe hares and Canada lynx in a forest over 30 years. The data showed that when hare populations peaked, lynx populations peaked about 2 years later. When hare populations crashed, lynx populations crashed 2 years after.",
     stem:"Which conclusion is BEST supported by this data pattern?",
     choices:[
-      "The lynx population controls the hare population with no effect on lynx numbers.",
-      "The hare population increases because lynx populations decrease first.",
-      "Hare and lynx populations cycle together — hare abundance drives lynx population changes with a time delay.",
-      "The populations are unrelated because they peak at different times."
+      "The lynx population controls hare numbers entirely, with no feedback effect on the lynx itself.",
+      "The hare population only grows after the lynx population has already dropped to a lower level.",
+      "Abundant hares drive lynx population growth, which then cycles back to reduce hare numbers over time.",
+      "These two animal populations are biologically unrelated and happen to peak at different times by coincidence."
     ],
     answer:2,
     explanation:"The time-delayed cycling pattern is characteristic of predator-prey dynamics. Abundant hares provide more food for lynx, so lynx populations grow — but with a lag. As lynx increase, they reduce hare numbers. Then with less food, lynx populations decline, and the cycle repeats. The 2-year lag reflects the time for population changes to ripple through the food web.",
     standard:"7.MS-LS2-1" },
 
   // G7 PS — Non-contact forces / magnetism (7.PS.2.5)
-  { grade:"7", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+  { test:2, grade:"7", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
     scenario:"A student holds two bar magnets with their north poles facing each other. When the student releases them, the magnets move apart — even though they never touch.",
     stem:"Which BEST explains why the magnets move apart without touching?",
     choices:[
-      "Gravity between the magnets pushes them apart.",
-      "Air pressure between the magnets forces them away from each other.",
-      "Magnetic fields around the magnets exert a repulsive force — like poles repel.",
-      "The magnets have opposite electric charges that push them apart."
+      "The gravitational force between the two magnets is pushing them in opposite directions.",
+      "Compressed air pressure building between the magnets forces each one away from the other.",
+      "Each magnet's field pushes against the other because like magnetic poles always repel each other.",
+      "Both magnets carry identical electric charges on their surfaces, causing them to push apart."
     ],
     answer:2,
     explanation:"Magnets exert non-contact forces through their magnetic fields. Like poles (N–N or S–S) repel each other; opposite poles (N–S) attract. The force acts even without physical contact because magnetic fields extend through space. This is fundamentally different from gravity (always attractive) or electric forces.",
     standard:"7.MS-PS2-5" },
 
   // G7 PS — Kinetic energy change scenarios (7.PS.3.5)
-  { grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
     scenario:"A soccer player kicks a ball that is sitting still on the ground. After the kick, the ball rolls quickly across the field.",
     stem:"Which BEST describes what happened to the ball's energy during the kick?",
     choices:[
@@ -865,7 +865,7 @@ const QUESTIONS = [
     standard:"7.MS-PS3-5" },
 
   // G7 PS — GPE depends on both height AND mass (7.PS.3.2)
-  { grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
     scenario:"Cart X (mass 100 kg) sits at the top of a hill. Cart Y (mass 200 kg) sits at the bottom of the same hill. Cart Z (mass 200 kg) sits at the top of the hill alongside Cart X.",
     stem:"Which cart has the GREATEST gravitational potential energy?",
     choices:[
@@ -879,7 +879,7 @@ const QUESTIONS = [
     standard:"7.MS-PS3-2" },
 
   // G7 TE — Engineering data table / criteria (7.ETS.1.4)
-  { grade:"7", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"te", topic:"Engineering Design", type:"Multiple Choice",
     scenario:"A town wants to improve cell phone service by adding new cell towers. The table below shows signal detection at different distances from a tower:\n• 10 km: signal detected ✓\n• 20 km: signal detected ✓\n• 30 km: signal detected ✓\n• 40 km: signal sometimes detected\n• 50 km: signal sometimes detected\n• 60 km: no signal detected\nThe town wants full signal coverage at minimum cost.",
     stem:"Based on this data, what is the MAXIMUM distance between cell towers that would guarantee full signal detection?",
     choices:[
@@ -893,35 +893,35 @@ const QUESTIONS = [
     standard:"7.MS-ETS1-4" },
 
   // G8 ESS — Fossil fuels & ancient environments (8.ESS.3.1)
-  { grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Choice",
     scenario:"Two U.S. states, Texas and Vermont, have very different amounts of oil and natural gas reserves. Texas has large reserves; Vermont has essentially none.",
     stem:"Which BEST explains this difference in fossil fuel resources?",
     choices:[
-      "Texas has more factories that produce oil from air and water.",
-      "Vermont's colder climate prevents oil from forming underground.",
-      "Millions of years ago, much of Texas was covered by shallow seas full of marine organisms whose remains became buried and slowly converted into oil and gas.",
-      "Texas is closer to the equator, and oil only forms in tropical climates."
+      "Texas has more oil refineries and factories that actively manufacture oil from air and water.",
+      "Vermont's consistently colder northern climate creates underground conditions that prevent any oil formation.",
+      "Texas once lay beneath ancient shallow seas, and buried marine organisms slowly transformed into oil and gas.",
+      "Texas sits much closer to the equator, and petroleum deposits can only ever form in tropical climates."
     ],
     answer:2,
     explanation:"Fossil fuels form from the remains of ancient organisms — mostly marine plankton and algae — that were buried under sediment in ancient seas. Over millions of years, heat and pressure converted this organic matter into oil and natural gas. Texas has large deposits because much of it was once covered by shallow tropical seas. Vermont's geological history is very different, with no equivalent ancient marine sediment.",
     standard:"8.MS-ESS3-1" },
 
   // G8 ESS — Air masses & weather fronts (8.ESS.2.5)
-  { grade:"8", domain:"ess", topic:"Weather & Climate", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ess", topic:"Weather & Climate", type:"Multiple Choice",
     scenario:"A cold, dry air mass from Canada moves south toward New England. It collides with a warm, moist air mass sitting over the region.",
     stem:"What weather change would MOST LIKELY occur in New England as the cold front arrives?",
     choices:[
-      "Temperatures will rise and skies will become clearer as the cold air warms up.",
-      "Temperatures will drop and cloudy, stormy weather will develop as the warm moist air is forced upward.",
-      "Temperatures will stay the same but winds will become calmer.",
-      "The warm air mass will push the cold air back north, causing drought conditions."
+      "Temperatures will rise and skies will clear as the incoming cold air mass gradually warms up.",
+      "Temperatures will drop and storm clouds will form as the warm moist air gets forced upward.",
+      "Temperatures will remain roughly the same while surface winds slowly become much calmer over time.",
+      "The warm air mass will push the cold front back north, ultimately creating dry drought conditions."
     ],
     answer:1,
     explanation:"When a cold front arrives, the denser cold air pushes under the lighter warm air, forcing it to rise rapidly. As warm, moist air rises and cools, water vapor condenses into clouds and precipitation. Temperatures drop behind the front as the cold air mass replaces the warm one. Cold fronts typically bring fast-moving storms followed by clearing skies and cooler temperatures.",
     standard:"8.MS-ESS2-5" },
 
   // G8 LS — Punnett square setup (8.LS.3.4)
-  { grade:"8", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
     scenario:"A gene for earlobe shape has two alleles: free earlobes (F) is dominant over attached earlobes (f). One parent has the genotype Ff (free earlobes). The other parent has the genotype ff (attached earlobes).",
     stem:"Which Punnett square CORRECTLY shows this cross?",
     choices:[
@@ -935,7 +935,7 @@ const QUESTIONS = [
     standard:"8.MS-LS3-4" },
 
   // G8 TE — Manufacturing finishing step (8.ETS.2.5)
-  { grade:"8", domain:"te", topic:"Technology & Manufacturing", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"te", topic:"Technology & Manufacturing", type:"Multiple Choice",
     scenario:"A company manufactures wooden outdoor chairs. The steps in their process include: cutting lumber to length, drilling holes for screws, sanding rough surfaces smooth, assembling the pieces with screws, and spraying with weatherproof sealant.",
     stem:"Which step BEST represents a FINISHING step in the manufacturing process?",
     choices:[
@@ -949,7 +949,7 @@ const QUESTIONS = [
     standard:"8.MS-ETS2-5" },
 
   // G8 ESS — Multi-select: human activities increasing CO₂ (8.ESS.3.5)
-  { grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Select",
+  { test:1, grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Select",
     scenario:"The graph of atmospheric CO₂ from 1900 to 2020 shows a rapid increase, rising from about 300 ppm to over 400 ppm — a more than 30% increase.",
     stem:"Select the THREE activities that have MOST contributed to this rise in atmospheric CO₂.",
     choices:[
@@ -1012,10 +1012,10 @@ function init() {
 function loadQuestions() {
   if (activeMode === "tests") {
     if (!activePracticeTest) { showTestSelectPrompt(); return; }
-    const gradeMap = { g6:"6", g7:"7", g8:"8" };
+    const testMap = { g6:1, g7:2, g8:3 };
     filteredQs = activePracticeTest === "full"
       ? [...QUESTIONS]
-      : QUESTIONS.filter(q => q.grade === gradeMap[activePracticeTest]);
+      : QUESTIONS.filter(q => q.test === testMap[activePracticeTest]);
   } else {
     filteredQs = QUESTIONS.filter(q => {
       const gradeOk = activeGrade === "all" || q.grade === activeGrade;
@@ -1303,8 +1303,8 @@ function generateReport() {
   const rawName     = (document.getElementById('studentNameInput').value || '').trim();
   const studentName = rawName || 'Student';
   const date        = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
-  const testNames   = { g6:'Test 1 — Grade 6 Foundation', g7:'Test 2 — Grade 7 Building',
-                        g8:'Test 3 — Grade 8 MCAS-Ready', full:'Full Review (All Grades)', null:'Topic Review Session' };
+  const testNames   = { g6:'Practice Test 1 — Mixed Grades 6–8', g7:'Practice Test 2 — Mixed Grades 6–8',
+                        g8:'Practice Test 3 — Mixed Grades 6–8', full:'Full Review (All Grades)', null:'Topic Review Session' };
   const testLabel   = testNames[activePracticeTest] || 'Practice Session';
   const total       = answeredLog.length;
   const correct     = answeredLog.filter(r => r.correct).length;
