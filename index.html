@@ -1229,10 +1229,15 @@ function checkAnswer() {
   }
 
   document.getElementById("btnCheck").style.display = "none";
-  document.getElementById("btnNext").style.display  = "inline-block";
-  // In practice test mode, relabel the next button to feel more exam-like
-  document.getElementById("btnNext").textContent =
-    activeMode === "tests" ? "Next →" : "Next Question →";
+
+  if (activeMode === "tests") {
+    // Practice test mode — auto-advance after 600ms so green/red registers
+    setTimeout(() => nextQuestion(), 600);
+  } else {
+    // Topic Review mode — show Next button manually
+    document.getElementById("btnNext").style.display = "inline-block";
+    document.getElementById("btnNext").textContent   = "Next Question →";
+  }
 
   // Log for report card
   answeredLog.push({ q, correct: isCorrect, chosenText: chosenTextForLog });
@@ -1246,9 +1251,14 @@ function updateProgress() {
   const total = filteredQs.length;
   document.getElementById("progressLabel").textContent =
     total ? `QUESTION ${Math.min(currentIdx+1,total)} OF ${total}` : "NO QUESTIONS";
-  document.getElementById("scoreLabel").textContent = answered ? `${score} / ${answered}` : "—";
+
+  // In Practice Test mode hide running score so students can't track in real time
+  document.getElementById("scoreLabel").textContent =
+    activeMode === "tests" ? "—" : (answered ? `${score} / ${answered}` : "—");
+
+  // Bar shows how far through the quiz, not accuracy
   document.getElementById("progressFill").style.width =
-    (total && answered) ? `${(score/answered)*100}%` : "0%";
+    (total && answered) ? `${(answered/total)*100}%` : "0%";
 }
 
 // ══════════════════ END SCREEN ══════════════════
