@@ -213,7 +213,7 @@
         <div class="test-card-emoji">📝</div>
         <div class="test-card-name">Practice Test 1</div>
         <div class="test-card-sub">All Grades<br>Mixed Topics</div>
-        <div class="test-card-count">23 QUESTIONS</div>
+        <div class="test-card-count">22 QUESTIONS</div>
       </div>
       <div class="test-card" id="card-g7" onclick="selectTest('g7')">
         <div class="test-card-emoji">📝</div>
@@ -231,7 +231,7 @@
         <div class="test-card-emoji">⭐</div>
         <div class="test-card-name">Full Review</div>
         <div class="test-card-sub">All Grades<br>Complete</div>
-        <div class="test-card-count">67 QUESTIONS</div>
+        <div class="test-card-count">66 QUESTIONS</div>
       </div>
     </div>
   </div>
@@ -295,7 +295,7 @@ const QUESTIONS = [
     choices:["Both cells are animal cells because they both have a cell membrane.","Cell A is a eukaryotic cell and Cell B is a prokaryotic cell.","Cell A is a prokaryotic cell because it has a nucleus.","Cell B is a eukaryotic cell because it has a cell wall."],
     answer:1,
     explanation:"Eukaryotic cells have a membrane-bound nucleus and organelles like mitochondria. Prokaryotic cells (like bacteria) lack both. Cell A matches eukaryotic; Cell B matches prokaryotic.",
-    standard:"6.MS-LS1-1" },
+    standard:"6.MS-LS1-2" },
 
   { test:2, grade:"6", domain:"ls", topic:"Cells & Organisms", type:"Multiple Choice",
     scenario:"The cell membrane controls what enters and leaves the cell. Water moves from areas of higher water concentration to lower water concentration through osmosis.",
@@ -354,36 +354,36 @@ const QUESTIONS = [
 
   // ── GRADE 6 · PHYSICAL SCIENCE ───────────────────────────────────────────
 
-  { test:1, grade:"6", domain:"ps", topic:"Matter & Properties", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ps", topic:"Matter & Properties", type:"Multiple Choice",
     scenario:"A student pours water into containers of different shapes. She then places some water in a freezer overnight.",
     stem:"Which statement BEST describes water particle behavior when it freezes?",
     choices:["Particles gain energy and move farther apart.","Particles lose energy, slow down, and lock into a fixed arrangement.","Particles are destroyed and replaced with harder ones.","Particles stay the same but the container shrinks around them."],
     answer:1,
     explanation:"Cooling removes thermal energy. As liquid water freezes, particles lose energy, slow dramatically, and arrange into the rigid fixed structure of ice. The particles themselves don't change — only their energy and arrangement do.",
-    standard:"6.MS-PS1-4(MA)" },
+    standard:"8.MS-PS1-4" },
 
-  { test:2, grade:"6", domain:"ps", topic:"Matter & Properties", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ps", topic:"Matter & Properties", type:"Multiple Choice",
     stem:"A nail rusts, a candle burns, an ice cube melts, and paper is torn in half. Which TWO are examples of a CHEMICAL change?",
     choices:["The nail rusting and the candle burning","The ice cube melting and the nail rusting","The paper tearing and the ice cube melting","The candle burning and the paper tearing"],
     answer:0,
     explanation:"Chemical changes produce new substances: rusting converts iron into iron oxide; burning converts wax and oxygen into CO₂ and water. Melting and tearing are physical changes — the substance's identity remains the same.",
-    standard:"6.MS-PS1-2" },
+    standard:"6.MS-PS1-6" },
 
-  { test:3, grade:"6", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
     scenario:"A hockey puck slides across flat ice and gradually slows to a stop.",
     stem:"According to Newton's First Law, why did the puck slow down and stop?",
     choices:["The puck ran out of the energy given when it was hit.","An unbalanced force (friction) acted on the puck.","Moving objects always slow down — that is their natural state.","The puck's mass increased as it slid."],
     answer:1,
     explanation:"Newton's First Law: an object in motion stays in motion unless an unbalanced force acts on it. Friction from the ice is the unbalanced force that slows the puck. Without friction it would slide forever.",
-    standard:"6.MS-PS2-1" },
+    standard:"8.MS-PS2-2" },
 
-  { test:1, grade:"6", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
     scenario:"Two teams play tug-of-war. Team A pulls 200 N right; Team B pulls 200 N left.",
     stem:"What will happen to the rope, and why?",
     choices:["The rope moves toward Team A because they are on the right.","The rope remains stationary because the forces are balanced.","The rope moves toward Team B because pulling left is stronger.","The rope breaks because two forces acting on it is too much."],
     answer:1,
     explanation:"Equal and opposite forces are balanced — the net force is zero. With no net force, there is no change in motion. The rope stays still.",
-    standard:"6.MS-PS2-1" },
+    standard:"8.MS-PS2-2" },
 
 
   // ── GRADE 6 · EARTH & SPACE SCIENCE ──────────────────────────────────────
@@ -424,49 +424,49 @@ const QUESTIONS = [
 
   // ── GRADE 7 · LIFE SCIENCE: BODY SYSTEMS ─────────────────────────────────
 
-  { test:3, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     scenario:"The heart pumps blood through the pulmonary circuit (heart → lungs → heart) and the systemic circuit (heart → body → heart).",
     stem:"A red blood cell leaves the right ventricle. Which sequence CORRECTLY traces its next journey?",
     choices:["Aorta → body tissues → right atrium","Pulmonary artery → lungs → left atrium","Pulmonary vein → lungs → left ventricle","Coronary artery → heart muscle → right atrium"],
     answer:1,
     explanation:"Blood from the right ventricle flows through the pulmonary artery to the lungs, picks up O₂ and releases CO₂, then returns via the pulmonary veins to the left atrium.",
-    standard:"7.MS-LS1-3(MA)" },
+    standard:"6.MS-LS1-3" },
 
-  { test:1, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     scenario:"A student's resting heart rate is 72 bpm. After running 5 minutes it rises to 148 bpm.",
     stem:"Which BEST explains why heart rate increases during exercise?",
     choices:["The heart beats faster to flush excess carbon dioxide out of storage.","Muscles need more oxygen and glucose, so the heart pumps faster to deliver both.","The lungs manufacture extra blood during exercise to supply the working muscles.","Heart rate rises specifically to lower pressure inside the major blood vessels."],
     answer:1,
     explanation:"During exercise, muscles increase cellular respiration and require more oxygen and glucose. The heart speeds up to deliver more oxygenated blood per minute to working muscles.",
-    standard:"7.MS-LS1-3(MA)" },
+    standard:"6.MS-LS1-3" },
 
-  { test:2, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     scenario:"The digestive system breaks food into molecules small enough to be absorbed into the bloodstream.",
     stem:"Which BEST describes what happens to food from the mouth to the small intestine?",
     choices:["Chewed in the mouth, broken down by stomach acid and enzymes, then absorbed in the small intestine.","Only chemically digested in the mouth using bile, then held in the stomach until needed.","The stomach absorbs all available nutrients, and the small intestine simply removes waste products.","Mechanical digestion takes place only in the large intestine after food leaves the stomach."],
     answer:0,
     explanation:"Digestion begins in the mouth (chewing + salivary enzymes). The stomach adds acid and enzymes. The small intestine completes digestion and is the primary site of nutrient absorption.",
-    standard:"7.MS-LS1-3(MA)" },
+    standard:"6.MS-LS1-3" },
 
-  { test:3, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     scenario:"Gas exchange occurs in tiny alveoli surrounded by capillaries.",
     stem:"Which feature of the alveoli makes them MOST efficient for gas exchange?",
     choices:["Thick muscular walls that actively pump gases","Large size that traps gases inside the lungs","Extremely thin walls and enormous total surface area allowing rapid diffusion","Location at the top of the lungs far from the heart"],
     answer:2,
     explanation:"Alveoli walls are one cell thick (minimal diffusion distance). ~300 million alveoli create a surface area roughly the size of a tennis court — maximizing the rate of O₂/CO₂ exchange between air and blood.",
-    standard:"7.MS-LS1-3(MA)" },
+    standard:"6.MS-LS1-3" },
 
-  { test:1, grade:"7", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ls", topic:"Human Body Systems", type:"Multiple Choice",
     stem:"Which BEST describes homeostasis?",
     choices:["The process by which organisms reproduce to maintain population size","The ability to maintain stable internal conditions despite external changes","The increase in body size as organisms grow","The process of adapting to new environments over generations"],
     answer:1,
     explanation:"Homeostasis is the body's ability to keep internal conditions — temperature, blood sugar, pH — stable despite changes in the outside environment. Examples include sweating when hot and shivering when cold.",
-    standard:"7.MS-LS1-4" },
+    standard:"6.MS-LS1-3" },
 
 
   // ── GRADE 7 · LIFE SCIENCE: ECOSYSTEMS ───────────────────────────────────
 
-  { test:2, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"In a meadow: grasses are eaten by grasshoppers, eaten by frogs, eaten by hawks.",
     stem:"Which organism is the PRIMARY PRODUCER in this food chain?",
     choices:["Grasshopper, because it eats the most","Frog, because it is in the middle","Grass, because it captures energy from sunlight","Hawk, because it is at the top"],
@@ -474,15 +474,15 @@ const QUESTIONS = [
     explanation:"Producers capture solar energy through photosynthesis and convert it into organic matter. All consumers in the chain depend on this energy. Grass is the sole primary producer here.",
     standard:"7.MS-LS2-3" },
 
-  { test:3, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"Scientists tracked rabbit and fox populations over 20 years. When rabbits increased, foxes increased soon after. When foxes increased, rabbits then decreased.",
     stem:"Which BEST explains this pattern?",
     choices:["Foxes actually teach rabbits predator-avoidance skills, helping the rabbit population grow.","Rabbits and foxes compete directly with each other for the same grassy food sources.","More rabbits support more foxes; rising fox numbers then bring rabbit populations back down.","Climate change is creating unpredictable fluctuations in both animal populations simultaneously."],
     answer:2,
     explanation:"Classic predator-prey dynamics: abundant prey supports predator growth; rising predator numbers reduce prey; fewer prey then cause predator decline, allowing prey to recover — repeating cycle.",
-    standard:"7.MS-LS2-4(MA)" },
+    standard:"7.MS-LS2-1" },
 
-  { test:1, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:2, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"Removing sea otters caused sea urchins to explode in number, which ate most of the kelp, turning the reef into an 'urchin barren.'",
     stem:"This BEST illustrates which ecological concept?",
     choices:["Photosynthesis — kelp needs more light when urchins are removed","A trophic cascade — removing one species triggers changes throughout the food web","Mutualism — sea otters and sea urchins help each other","Natural selection — sea urchins evolved to eat kelp after otters left"],
@@ -493,28 +493,28 @@ const QUESTIONS = [
 
   // ── GRADE 7 · LIFE SCIENCE: HEREDITY ─────────────────────────────────────
 
-  { test:2, grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
     scenario:"In pea plants, yellow seeds (Y) is dominant over green seeds (y). Two plants with genotype Yy are crossed.",
     stem:"What percentage of their offspring will MOST LIKELY have green seeds?",
     choices:["0% — dominant alleles always mask recessive ones in all offspring","25% — only yy offspring will have green seeds","50% — half of all offspring will be green","75% — most offspring will show the recessive trait"],
     answer:1,
     explanation:"Punnett square for Yy × Yy: YY (25%), Yy (50%), yy (25%). Only yy plants show green — they have no dominant Y allele to mask it. So 25% will have green seeds.",
-    standard:"7.MS-LS3-2" },
+    standard:"8.MS-LS3-4(MA)" },
 
-  { test:3, grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
     stem:"Which BEST describes the relationship between genes, DNA, and chromosomes?",
     choices:["Chromosomes are composed entirely of genes, and every gene is itself made of cells.","Genes are segments of DNA that code for proteins; DNA is tightly coiled into chromosomes.","Genes produce chromosomes, which in turn produce and contain all of the cell's DNA.","DNA and chromosomes are the same structure; genes are separate molecules found in the cytoplasm."],
     answer:1,
     explanation:"Chromosomes are made of tightly wound DNA. Genes are specific segments of DNA that carry instructions for building proteins. The hierarchy is: chromosome → DNA → gene → protein.",
-    standard:"7.MS-LS3-1" },
+    standard:"8.MS-LS3-3(MA)" },
 
-  { test:1, grade:"7", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ls", topic:"Heredity & Genetics", type:"Multiple Choice",
     scenario:"Identical twins share 100% of their DNA, yet one twin may develop Type 2 diabetes while the other does not.",
     stem:"What does this BEST suggest about traits?",
     choices:["DNA tests for identical twins must be producing inaccurate results if health outcomes differ.","Traits are shaped by both genetic information and environmental factors like diet and lifestyle.","One twin must have developed entirely new genetic mutations sometime after the moment of birth.","All diseases result exclusively from viral infections and never from genetics or personal lifestyle."],
     answer:1,
     explanation:"Identical genomes, different outcomes. Differences in health must be explained by environmental factors (diet, exercise, stress). This demonstrates that both nature (genes) and nurture (environment) shape traits.",
-    standard:"7.MS-LS3-2" },
+    standard:"8.MS-LS1-5" },
 
 
   // ── GRADE 7 · EARTH SCIENCE: PLATE TECTONICS ─────────────────────────────
@@ -525,7 +525,7 @@ const QUESTIONS = [
     choices:["Identical seasonal weather patterns observed on widely separated continents around the world","Matching fossils of land-dwelling species found on continents now separated by wide oceans","Every single continent has its own central mountain range running through its interior","All of the continents are currently drifting steadily toward a single convergence point"],
     answer:1,
     explanation:"Identical fossils of land-dwelling organisms on widely separated continents is strong evidence those landmasses were once joined. The animals couldn't have crossed open ocean — the continents must have been connected.",
-    standard:"7.MS-ESS2-3" },
+    standard:"7.MS-ESS2-2" },
 
   { test:1, grade:"7", domain:"ess", topic:"Plate Tectonics", type:"Multiple Choice",
     scenario:"Earth's lithosphere is broken into tectonic plates that move a few centimeters per year.",
@@ -538,21 +538,21 @@ const QUESTIONS = [
 
   // ── GRADE 7 · PHYSICAL SCIENCE: CHEMISTRY ────────────────────────────────
 
-  { test:3, grade:"7", domain:"ps", topic:"Chemical Reactions", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ps", topic:"Chemical Reactions", type:"Multiple Choice",
     scenario:"A student mixes baking soda and vinegar. Bubbles form rapidly, the mixture gets slightly cooler, and new substances are produced.",
     stem:"Which evidence BEST indicates a chemical reaction occurred?",
     choices:["The mixture turned liquid — liquids are always products of chemical reactions.","New substances with different properties formed, and the temperature changed.","The baking soda dissolved — dissolving is always a chemical change.","Bubbles formed — bubbles always indicate two liquids mixing."],
     answer:1,
     explanation:"Key signs of a chemical reaction: formation of new substances, temperature change, gas production, color change, or precipitate. Here, CO₂ gas formed, temperature dropped, and original substances were converted — multiple lines of evidence for a chemical reaction.",
-    standard:"7.MS-PS1-2" },
+    standard:"6.MS-PS1-6" },
 
-  { test:1, grade:"7", domain:"ps", topic:"Chemical Reactions", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ps", topic:"Chemical Reactions", type:"Multiple Choice",
     scenario:"A student reacts 24 g of magnesium with 16 g of oxygen in a closed container.",
     stem:"According to the Law of Conservation of Mass, what is the mass of magnesium oxide produced?",
     choices:["16 g — only oxygen becomes part of the product","24 g — only magnesium becomes part of the product","40 g — total reactant mass equals total product mass","8 g — mass is lost as heat during the reaction"],
     answer:2,
     explanation:"Conservation of Mass: matter is neither created nor destroyed. 24 g Mg + 16 g O₂ = 40 g MgO. Heat released comes from energy changes in chemical bonds, not from disappearing mass.",
-    standard:"7.MS-PS1-5" },
+    standard:"8.MS-PS1-5" },
 
 
   // ── GRADE 7 · TECHNOLOGY & ENGINEERING ───────────────────────────────────
@@ -568,7 +568,7 @@ const QUESTIONS = [
 
   // ── GRADE 8 · LIFE SCIENCE: EVOLUTION ────────────────────────────────────
 
-  { test:1, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
+  { test:2, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
     scenario:"In a population of mice on dark soil, some have dark fur, some have light fur. Owls spot light-furred mice more easily against the dark soil.",
     stem:"Over many generations, what change would MOST LIKELY result from natural selection?",
     choices:["The mice would learn to change their fur color to match the soil.","The proportion of dark-furred mice would increase because they survive and reproduce more.","All mice would develop dark fur within a few weeks.","The owl population would decrease because mice become harder to find."],
@@ -576,7 +576,7 @@ const QUESTIONS = [
     explanation:"Natural selection acts on heritable variation. Dark-furred mice survive and reproduce at higher rates on dark soil (better camouflage). Over generations, their alleles become more common. This is not a learned change — it's a shift in population allele frequency.",
     standard:"8.MS-LS4-4" },
 
-  { test:2, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
+  { test:3, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
     scenario:"Scientists find that human and chimpanzee DNA sequences are ~98–99% identical.",
     stem:"What does this BEST support?",
     choices:["Humans and chimpanzees belong to the same species and are capable of interbreeding.","Humans and chimpanzees descended from a shared common ancestor and are closely related.","DNA sequence comparisons are considered unreliable tools for drawing conclusions about evolution.","Given enough time, chimpanzees will eventually evolve and transform into modern humans."],
@@ -584,20 +584,13 @@ const QUESTIONS = [
     explanation:"DNA similarity reflects evolutionary relatedness. ~98–99% similarity indicates a relatively recent common ancestor. The more similar two species' DNA, the more closely related they are evolutionarily.",
     standard:"8.MS-LS4-2" },
 
-  { test:3, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
+  { test:1, grade:"8", domain:"ls", topic:"Natural Selection", type:"Multiple Choice",
     scenario:"Galápagos finches Darwin observed have beaks of many shapes — thick seed-cracking beaks to long probing beaks — depending on their island.",
     stem:"Which BEST explains how this diversity of beak shapes developed?",
     choices:["Each individual finch deliberately selected a beak shape that best suited its preferred food.","Natural selection favored different beak shapes on each island, producing distinct finch populations over time.","Finch beaks gradually reshaped themselves during each bird's own lifetime based on its diet.","A single ancestral finch pair produced offspring with every possible beak shape fully formed."],
     answer:1,
     explanation:"Natural selection acting on variation: finches with beak shapes matching available food on each island survived and reproduced more. Over generations those shapes became dominant on each island — adaptive radiation.",
     standard:"8.MS-LS4-4" },
-
-  { test:1, grade:"8", domain:"ls", topic:"Classification", type:"Multiple Choice",
-    stem:"A new multicellular organism has chitin cell walls, cannot make its own food, and reproduces with spores. Which kingdom does it MOST LIKELY belong to?",
-    choices:["Plantae — it has a cell wall","Animalia — it cannot make its own food","Fungi — chitin cell walls and spore reproduction","Protista — multicellular and uses spores"],
-    answer:2,
-    explanation:"Fungi have chitin cell walls (unlike cellulose in plants), are heterotrophic, and reproduce by spores. All three features together identify this organism as a fungus.",
-    standard:"8.MS-LS4-1" },
 
   { test:2, grade:"8", domain:"ls", topic:"Photosynthesis & Respiration", type:"Multiple Choice",
     scenario:"Photosynthesis: CO₂ + H₂O + light → glucose + O₂\nCellular Respiration: glucose + O₂ → CO₂ + H₂O + ATP",
@@ -610,28 +603,28 @@ const QUESTIONS = [
 
   // ── GRADE 8 · LIFE SCIENCE: NERVOUS SYSTEM ───────────────────────────────
 
-  { test:3, grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
     scenario:"Sensory neurons carry signals from the body to the brain. Interneurons process information in the brain/spinal cord. Motor neurons carry signals from brain to muscles.",
     stem:"A student touches a hot pan. Which sequence CORRECTLY describes the reflex arc?",
     choices:["Motor neuron → interneuron → sensory neuron → muscle contracts","Sensory neuron → interneuron (spinal cord) → motor neuron → muscle contracts","Interneuron → sensory neuron → brain → muscle relaxes","Muscle → motor neuron → brain → sensory neuron → pain response"],
     answer:1,
     explanation:"Reflex arc: sensory neuron detects stimulus → signal reaches spinal cord → interneuron processes → motor neuron signals muscle → muscle contracts. This loop bypasses the brain initially, which is why the withdrawal happens before you consciously feel the pain.",
-    standard:"8.MS-LS1-8(MA)" },
+    standard:"6.MS-LS1-3" },
 
-  { test:1, grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
     scenario:"When an electrical signal reaches the end of a neuron, it triggers release of chemical messengers into a tiny gap called a synapse.",
     stem:"What is the role of neurotransmitters at a synapse?",
     choices:["They travel through bone tissue, carrying electrical signals directly to the target muscles.","They cross the synapse, carrying chemical signals from one neuron to the next neuron.","They are stored inside the cell nucleus, where they activate and trigger DNA replication.","They absorb and neutralize incoming nerve signals, which significantly slows the body's responses."],
     answer:1,
     explanation:"Neurons can't make direct electrical contact across synapses. Neurotransmitters are released into the gap, diffuse across, and bind to receptors on the next neuron — transmitting the signal chemically before it continues as electrical impulse.",
-    standard:"8.MS-LS1-8(MA)" },
+    standard:"6.MS-LS1-3" },
 
-  { test:2, grade:"8", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
+  { test:2, grade:"6", domain:"ls", topic:"Nervous System", type:"Multiple Choice",
     stem:"Which brain region is primarily responsible for conscious thought, decision-making, and voluntary movement?",
     choices:["Cerebellum — coordinates balance and fine motor control","Brainstem — regulates heartbeat and breathing","Cerebrum — conscious thought and voluntary actions","Hypothalamus — regulates body temperature and hunger"],
     answer:2,
     explanation:"The cerebrum is the largest brain region, handling thinking, language, memory, problem-solving, and voluntary movement. The other regions handle more automatic or coordination-based functions.",
-    standard:"8.MS-LS1-8(MA)" },
+    standard:"6.MS-LS1-3" },
 
 
   // ── GRADE 8 · EARTH & SPACE SCIENCE ──────────────────────────────────────
@@ -663,21 +656,21 @@ const QUESTIONS = [
 
   // ── GRADE 8 · PHYSICAL SCIENCE: ENERGY ───────────────────────────────────
 
-  { test:2, grade:"8", domain:"ps", topic:"Energy", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
     scenario:"A roller coaster at the top of a hill has maximum gravitational potential energy.",
     stem:"As it rolls down and accelerates, what energy transformation occurs?",
     choices:["Kinetic energy converts to potential energy.","Chemical energy converts to electrical energy.","Gravitational potential energy converts to kinetic energy.","Thermal energy converts to gravitational potential energy."],
     answer:2,
     explanation:"At the peak: maximum potential energy, minimum kinetic. Descending: height decreases, speed increases — potential converts to kinetic. Total mechanical energy is conserved (ignoring friction).",
-    standard:"8.MS-PS3-2" },
+    standard:"7.MS-PS3-2" },
 
-  { test:3, grade:"8", domain:"ps", topic:"Energy", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
     scenario:"A campfire converts chemical energy in wood into heat and light.",
     stem:"Which BEST applies the Law of Conservation of Energy to this situation?",
     choices:["Energy is newly created by the campfire — that is precisely why heat and light both appear.","The wood's chemical energy converts into heat and light, with total energy in the system unchanged.","The campfire permanently destroys energy during combustion, which explains why the wood disappears.","Only thermal heat energy counts here; the visible light produced by the fire is not true energy."],
     answer:1,
     explanation:"Energy cannot be created or destroyed. The chemical potential energy in wood's molecular bonds is released during combustion, converting into thermal and radiant energy. Total energy is conserved — it just changes form.",
-    standard:"8.MS-PS3-1" },
+    standard:"7.MS-PS3-7(MA)" },
 
 
   // ── GRADE 8 · PHYSICAL SCIENCE: FORCES ───────────────────────────────────
@@ -696,37 +689,37 @@ const QUESTIONS = [
     choices:["The bowling ball — gravity pulls harder on heavier objects.","The tennis ball — it has less air resistance.","Both balls hit at exactly the same time.","Neither falls because there is no gravity on the Moon."],
     answer:2,
     explanation:"Without air resistance, all objects fall with the same gravitational acceleration regardless of mass. The Moon has no atmosphere, so both balls fall at ~1.6 m/s² and hit simultaneously — as demonstrated on Apollo 15.",
-    standard:"8.MS-PS2-4" },
+    standard:"8.MS-PS2-2" },
 
 
   // ── GRADE 8 · PHYSICAL SCIENCE: WAVES ────────────────────────────────────
 
-  { test:3, grade:"8", domain:"ps", topic:"Waves & Sound", type:"Multiple Choice",
+  { test:3, grade:"6", domain:"ps", topic:"Waves & Sound", type:"Multiple Choice",
     scenario:"Sound waves require a medium to travel. Light waves can travel through a vacuum.",
     stem:"An astronaut hits two metal objects together in space. A watching teammate would NOT hear it because:",
     choices:["Sound waves travel far too slowly through space to ever reach the spacecraft window.","Sound requires matter to travel through as a medium, and space is nearly a complete vacuum.","The thick material of the astronaut's helmet absorbs every outgoing sound wave completely.","Since light travels faster than sound, the visual impact arrives but the sound wave never does."],
     answer:1,
     explanation:"Sound is a mechanical wave needing particles to compress and expand. Space is nearly a perfect vacuum — almost no matter. Without a medium, sound cannot propagate. The teammate sees the collision but hears nothing.",
-    standard:"8.MS-PS4-2" },
+    standard:"6.MS-PS4-2" },
 
-  { test:1, grade:"8", domain:"ps", topic:"Waves & Light", type:"Multiple Choice",
+  { test:1, grade:"6", domain:"ps", topic:"Waves & Light", type:"Multiple Choice",
     scenario:"White light passing through a prism separates into a rainbow of colors.",
     stem:"What causes white light to separate into colors through a prism?",
     choices:["The prism chemically generates new colors that were never originally present in white light.","Different wavelengths slow by slightly different amounts in glass, so each bends at a different angle.","The prism selectively absorbs certain wavelengths and reflects the remaining visible colors back outward.","White light only separates when it passes through material containing red, green, and blue pigments."],
     answer:1,
     explanation:"White light contains all visible wavelengths. Different wavelengths slow by slightly different amounts in glass and therefore refract (bend) at different angles — dispersion. Violet bends most; red bends least. The prism separates existing colors; it doesn't create them.",
-    standard:"8.MS-PS4-2" },
+    standard:"6.MS-PS4-2" },
 
 
   // ── GRADE 8 · PHYSICAL SCIENCE: ELECTRICITY ──────────────────────────────
 
-  { test:2, grade:"8", domain:"ps", topic:"Electricity & Circuits", type:"Multiple Choice",
+  { test:2, grade:"7", domain:"ps", topic:"Electricity & Circuits", type:"Multiple Choice",
     scenario:"A student adds a second identical light bulb in parallel to a 9V battery circuit (both bulbs connect directly to the battery).",
     stem:"What MOST LIKELY happens to the brightness of the first bulb?",
     choices:["It dims — voltage is shared between the two bulbs.","It gets brighter — more bulbs create more total energy.","It stays the same — each bulb receives the full battery voltage.","Both bulbs go out — the circuit overloads."],
     answer:2,
     explanation:"In parallel circuits, each branch receives the full source voltage. Unlike series circuits (where voltage divides), parallel connections maintain full operating voltage to each device. The first bulb's brightness is unchanged.",
-    standard:"8.MS-PS3-3" },
+    standard:"7.MS-ETS3-2(MA)" },
 
 
   // ── GRADE 8 · TECHNOLOGY & ENGINEERING ───────────────────────────────────
@@ -809,7 +802,7 @@ const QUESTIONS = [
     standard:"6.MS-ESS1-4" },
 
   // G7 LS — Ecological relationship vocabulary (7.LS.2.2)
-  { test:2, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"In a grassland ecosystem, lions and cheetahs both hunt zebras. Neither predator attacks the other, but their shared need for zebra prey means that more kills by one predator leaves less food for the other.",
     stem:"Which term BEST describes the relationship between lions and cheetahs in this ecosystem?",
     choices:[
@@ -823,7 +816,7 @@ const QUESTIONS = [
     standard:"7.MS-LS2-2" },
 
   // G7 LS — Population graph analysis (7.LS.2.1)
-  { test:3, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ls", topic:"Ecosystems", type:"Multiple Choice",
     scenario:"A scientist tracked the populations of snowshoe hares and Canada lynx in a forest over 30 years. The data showed that when hare populations peaked, lynx populations peaked about 2 years later. When hare populations crashed, lynx populations crashed 2 years after.",
     stem:"Which conclusion is BEST supported by this data pattern?",
     choices:[
@@ -837,7 +830,7 @@ const QUESTIONS = [
     standard:"7.MS-LS2-1" },
 
   // G7 PS — Non-contact forces / magnetism (7.PS.2.5)
-  { test:2, grade:"7", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
+  { test:3, grade:"7", domain:"ps", topic:"Forces & Motion", type:"Multiple Choice",
     scenario:"A student holds two bar magnets with their north poles facing each other. When the student releases them, the magnets move apart — even though they never touch.",
     stem:"Which BEST explains why the magnets move apart without touching?",
     choices:[
@@ -851,7 +844,7 @@ const QUESTIONS = [
     standard:"7.MS-PS2-5" },
 
   // G7 PS — Kinetic energy change scenarios (7.PS.3.5)
-  { test:3, grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
+  { test:1, grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
     scenario:"A soccer player kicks a ball that is sitting still on the ground. After the kick, the ball rolls quickly across the field.",
     stem:"Which BEST describes what happened to the ball's energy during the kick?",
     choices:[
@@ -865,7 +858,7 @@ const QUESTIONS = [
     standard:"7.MS-PS3-5" },
 
   // G7 PS — GPE depends on both height AND mass (7.PS.3.2)
-  { test:1, grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
+  { test:2, grade:"7", domain:"ps", topic:"Energy", type:"Multiple Choice",
     scenario:"Cart X (mass 100 kg) sits at the top of a hill. Cart Y (mass 200 kg) sits at the bottom of the same hill. Cart Z (mass 200 kg) sits at the top of the hill alongside Cart X.",
     stem:"Which cart has the GREATEST gravitational potential energy?",
     choices:[
@@ -949,7 +942,7 @@ const QUESTIONS = [
     standard:"8.MS-ETS2-5" },
 
   // G8 ESS — Multi-select: human activities increasing CO₂ (8.ESS.3.5)
-  { test:1, grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Select",
+  { test:2, grade:"8", domain:"ess", topic:"Human Impact on Earth", type:"Multiple Select",
     scenario:"The graph of atmospheric CO₂ from 1900 to 2020 shows a rapid increase, rising from about 300 ppm to over 400 ppm — a more than 30% increase.",
     stem:"Select the THREE activities that have MOST contributed to this rise in atmospheric CO₂.",
     choices:[
