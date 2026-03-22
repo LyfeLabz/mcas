@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MCAS Practice | LyfeLabz</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QHB5G2B5B"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -140,7 +141,35 @@
 
     .site-footer { background: var(--dark); border-top: 1px solid var(--border); text-align: center; padding: 1.1rem; font-size: 0.78rem; color: var(--muted); }
     .site-footer a { color: var(--teal); text-decoration: none; }
-    @media (max-width:480px) { .q-card { padding: 1.2rem 0.95rem; } .hero-stats { gap: 1.2rem; } }
+
+    /* ── MODE TABS ── */
+    .mode-tabs { display: flex; justify-content: center; padding: 0.85rem 1rem 0; gap: 0; }
+    .mode-tab { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.85rem; padding: 0.48rem 1.4rem; border: 1.5px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; transition: all 0.15s; }
+    .mode-tab:first-child { border-radius: 10px 0 0 10px; }
+    .mode-tab:last-child  { border-radius: 0 10px 10px 0; border-left: none; }
+    .mode-tab.active { background: var(--teal); border-color: var(--teal); color: var(--darker); }
+    .mode-tab:not(.active):hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ── TEST CARDS ── */
+    .test-cards { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; padding: 1rem 1rem 1.2rem; }
+    .test-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 1.1rem 1.3rem; cursor: pointer; transition: all 0.18s; width: 155px; text-align: center; }
+    .test-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+    .test-card.selected { border-color: var(--gold); background: rgba(245,200,66,0.08); }
+    .test-card-emoji { font-size: 1.7rem; margin-bottom: 0.35rem; }
+    .test-card-name { font-family: 'Fredoka One', cursive; font-size: 1rem; color: var(--gold); }
+    .test-card-sub { font-size: 0.7rem; color: var(--muted); font-weight: 700; margin-top: 2px; line-height: 1.3; }
+    .test-card-count { font-family: 'Orbitron', monospace; font-size: 0.6rem; color: var(--teal); margin-top: 5px; }
+
+    /* ── REPORT SECTION (end screen) ── */
+    .report-divider { border: none; border-top: 1px solid var(--border); margin: 1.4rem auto; max-width: 380px; }
+    .report-label { font-family: 'Orbitron', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 2px; margin-bottom: 0.65rem; }
+    .name-input { font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 700; padding: 0.55rem 1rem; border-radius: 10px; border: 1.5px solid var(--border); background: rgba(255,255,255,0.05); color: var(--text); width: 270px; max-width: 90%; text-align: center; outline: none; transition: border-color 0.15s; display: block; margin: 0 auto 0.75rem; }
+    .name-input:focus { border-color: var(--teal); }
+    .name-input::placeholder { color: var(--muted); font-weight: 600; }
+    .btn-report { font-family: 'Fredoka One', cursive; font-size: 1rem; padding: 0.6rem 1.8rem; border-radius: 999px; border: none; background: var(--teal); color: var(--darker); cursor: pointer; transition: transform 0.1s, opacity 0.1s; }
+    .btn-report:hover { transform: scale(1.03); opacity: 0.9; }
+
+    @media (max-width:480px) { .q-card { padding: 1.2rem 0.95rem; } .hero-stats { gap: 1.2rem; } .test-card { width: 140px; } }
   </style>
 </head>
 <body>
@@ -171,18 +200,57 @@
 </section>
 
 <div class="filter-section">
-  <div class="filter-row" id="gradeFilterBar">
-    <button class="grade-btn active" data-grade="all">All Grades</button>
-    <button class="grade-btn" data-grade="6">Grade 6</button>
-    <button class="grade-btn" data-grade="7">Grade 7</button>
-    <button class="grade-btn" data-grade="8">Grade 8</button>
+  <!-- Mode tabs -->
+  <div class="mode-tabs">
+    <button class="mode-tab active" id="modeTabDrill" onclick="switchMode('drill')">📚 Topic Review</button>
+    <button class="mode-tab" id="modeTabTests" onclick="switchMode('tests')">🎯 Practice Tests</button>
   </div>
-  <div class="filter-row" id="topicFilterBar">
-    <button class="topic-btn active" data-topic="all">All Topics</button>
-    <button class="topic-btn" data-topic="ls">🌱 Life Science</button>
-    <button class="topic-btn" data-topic="ps">⚡ Physical Science</button>
-    <button class="topic-btn" data-topic="ess">🌍 Earth &amp; Space</button>
-    <button class="topic-btn" data-topic="te">🔧 Tech &amp; Engineering</button>
+
+  <!-- Practice Tests panel -->
+  <div id="panelTests" style="display:none;">
+    <div class="test-cards">
+      <div class="test-card" id="card-g6" onclick="selectTest('g6')">
+        <div class="test-card-emoji">🟣</div>
+        <div class="test-card-name">Test 1</div>
+        <div class="test-card-sub">Grade 6<br>Foundation</div>
+        <div class="test-card-count">20 QUESTIONS</div>
+      </div>
+      <div class="test-card" id="card-g7" onclick="selectTest('g7')">
+        <div class="test-card-emoji">🟠</div>
+        <div class="test-card-name">Test 2</div>
+        <div class="test-card-sub">Grade 7<br>Building</div>
+        <div class="test-card-count">22 QUESTIONS</div>
+      </div>
+      <div class="test-card" id="card-g8" onclick="selectTest('g8')">
+        <div class="test-card-emoji">🔵</div>
+        <div class="test-card-name">Test 3</div>
+        <div class="test-card-sub">Grade 8<br>MCAS-Ready</div>
+        <div class="test-card-count">25 QUESTIONS</div>
+      </div>
+      <div class="test-card" id="card-full" onclick="selectTest('full')">
+        <div class="test-card-emoji">⭐</div>
+        <div class="test-card-name">Full Review</div>
+        <div class="test-card-sub">All Grades<br>Complete</div>
+        <div class="test-card-count">67 QUESTIONS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Topic Review panel -->
+  <div id="panelDrill">
+    <div class="filter-row" id="gradeFilterBar">
+      <button class="grade-btn active" data-grade="all">All Grades</button>
+      <button class="grade-btn" data-grade="6">Grade 6</button>
+      <button class="grade-btn" data-grade="7">Grade 7</button>
+      <button class="grade-btn" data-grade="8">Grade 8</button>
+    </div>
+    <div class="filter-row" id="topicFilterBar">
+      <button class="topic-btn active" data-topic="all">All Topics</button>
+      <button class="topic-btn" data-topic="ls">🌱 Life Science</button>
+      <button class="topic-btn" data-topic="ps">⚡ Physical Science</button>
+      <button class="topic-btn" data-topic="ess">🌍 Earth &amp; Space</button>
+      <button class="topic-btn" data-topic="te">🔧 Tech &amp; Engineering</button>
+    </div>
   </div>
 </div>
 
@@ -203,6 +271,10 @@
     <p class="end-msg" id="endMsg"></p>
     <div class="end-breakdown" id="endBreakdown"></div>
     <button class="btn-restart" onclick="restartQuiz()">Try Again</button>
+    <hr class="report-divider">
+    <p class="report-label">GENERATE YOUR REPORT CARD</p>
+    <input class="name-input" id="studentNameInput" type="text" placeholder="✏️ Type your name here" maxlength="60" />
+    <button class="btn-report" onclick="generateReport()">📋 Generate My Report</button>
   </div>
 </main>
 
@@ -894,20 +966,24 @@ const QUESTIONS = [
 ]; // end QUESTIONS
 
 // ═══════════════════ STATE ═══════════════════
-let activeGrade    = "all";
-let activeTopic    = "all";
-let filteredQs     = [];
-let currentIdx     = 0;
-let score          = 0;
-let answered       = 0;
-let selectedChoice  = null;
-let selectedChoices = [];  // for multi-select questions
-let domainStats    = {};
+let activeGrade       = "all";
+let activeTopic       = "all";
+let activeMode        = "drill";   // "tests" | "drill"
+let activePracticeTest = null;     // "g6" | "g7" | "g8" | "full" | null
+let filteredQs        = [];
+let currentIdx        = 0;
+let score             = 0;
+let answered          = 0;
+let selectedChoice    = null;
+let selectedChoices   = [];
+let domainStats       = {};
+let answeredLog       = [];        // {q, correct, chosenIdx, chosenText} per question
 
 // ════════════════════ INIT ════════════════════
 function init() {
   document.getElementById("totalQCount").textContent = QUESTIONS.length;
 
+  // Drill-by-topic filter events (panels may not be visible but still wire up)
   document.getElementById("gradeFilterBar").addEventListener("click", e => {
     const btn = e.target.closest(".grade-btn");
     if (!btn) return;
@@ -929,15 +1005,24 @@ function init() {
     restartQuiz();
   });
 
+  // Start in drill mode by default
   loadQuestions();
 }
 
 function loadQuestions() {
-  filteredQs = QUESTIONS.filter(q => {
-    const gradeOk = activeGrade === "all" || q.grade === activeGrade;
-    const topicOk = activeTopic === "all" || q.domain === activeTopic;
-    return gradeOk && topicOk;
-  });
+  if (activeMode === "tests") {
+    if (!activePracticeTest) { showTestSelectPrompt(); return; }
+    const gradeMap = { g6:"6", g7:"7", g8:"8" };
+    filteredQs = activePracticeTest === "full"
+      ? [...QUESTIONS]
+      : QUESTIONS.filter(q => q.grade === gradeMap[activePracticeTest]);
+  } else {
+    filteredQs = QUESTIONS.filter(q => {
+      const gradeOk = activeGrade === "all" || q.grade === activeGrade;
+      const topicOk = activeTopic === "all" || q.domain === activeTopic;
+      return gradeOk && topicOk;
+    });
+  }
 
   // Fisher-Yates shuffle
   for (let i = filteredQs.length - 1; i > 0; i--) {
@@ -945,12 +1030,13 @@ function loadQuestions() {
     [filteredQs[i], filteredQs[j]] = [filteredQs[j], filteredQs[i]];
   }
 
-  currentIdx     = 0;
-  score          = 0;
-  answered       = 0;
+  currentIdx      = 0;
+  score           = 0;
+  answered        = 0;
   selectedChoice  = null;
   selectedChoices = [];
-  domainStats    = { ls:{c:0,t:0}, ps:{c:0,t:0}, ess:{c:0,t:0}, te:{c:0,t:0} };
+  domainStats     = { ls:{c:0,t:0}, ps:{c:0,t:0}, ess:{c:0,t:0}, te:{c:0,t:0} };
+  answeredLog     = [];
 
   document.getElementById("endScreen").style.display    = "none";
   document.getElementById("progressDash").style.display = "";
@@ -961,6 +1047,35 @@ function loadQuestions() {
 }
 
 function restartQuiz() { loadQuestions(); }
+
+// ══════════════════ MODE SWITCHING ══════════════════
+function switchMode(mode) {
+  activeMode = mode;
+  document.getElementById('modeTabDrill').classList.toggle('active', mode === 'drill');
+  document.getElementById('modeTabTests').classList.toggle('active', mode === 'tests');
+  document.getElementById('panelTests').style.display = mode === 'tests' ? '' : 'none';
+  document.getElementById('panelDrill').style.display = mode === 'drill' ? '' : 'none';
+  if (mode === 'tests') {
+    if (!activePracticeTest) showTestSelectPrompt(); else restartQuiz();
+  } else {
+    restartQuiz();
+  }
+}
+
+function selectTest(testId) {
+  ['g6','g7','g8','full'].forEach(t =>
+    document.getElementById('card-'+t).classList.toggle('selected', t === testId));
+  activePracticeTest = testId;
+  restartQuiz();
+}
+
+function showTestSelectPrompt() {
+  document.getElementById('endScreen').style.display    = 'none';
+  document.getElementById('progressDash').style.display = 'none';
+  document.getElementById('questionArea').style.display = '';
+  document.getElementById('questionArea').innerHTML =
+    '<div class="no-questions">👆 Select a practice test above to begin.</div>';
+}
 
 // ═══════════════════ RENDER ═══════════════════
 const GRADE_LABEL  = { "6":"Grade 6", "7":"Grade 7", "8":"Grade 8" };
@@ -1004,7 +1119,7 @@ function renderQuestion() {
       <div class="choices">${choicesHTML}</div>
       <div class="feedback-box" id="feedbackBox"></div>
       <div class="q-actions">
-        <button class="btn-check" id="btnCheck" onclick="checkAnswer()" disabled>Check Answer</button>
+        <button class="btn-check" id="btnCheck" onclick="checkAnswer()" disabled>${activeMode === 'tests' ? 'Submit Answer' : 'Check Answer'}</button>
         <button class="btn-next"  id="btnNext"  onclick="nextQuestion()">Next Question →</button>
       </div>
     </div>`;
@@ -1050,6 +1165,12 @@ function checkAnswer() {
 
   let isCorrect;
 
+
+  // Capture chosen text for report BEFORE clearing selections
+  const chosenTextForLog = isMulti
+    ? selectedChoices.map(i => q.choices[i]).join('; ')
+    : (selectedChoice !== null ? q.choices[selectedChoice] : '');
+
   if (isMulti) {
     const correctSet = q.answers; // array of correct indices
     // Mark all correct answers green
@@ -1089,18 +1210,33 @@ function checkAnswer() {
   if (isCorrect) domainStats[q.domain].c++;
 
   const fb = document.getElementById("feedbackBox");
-  fb.className = `feedback-box ${isCorrect ? "correct" : "wrong"}`;
-  fb.style.display = "block";
-  fb.innerHTML = `
-    <div class="feedback-header">
-      <span class="feedback-icon">${isCorrect ? "✅" : "❌"}</span>
-      <span class="feedback-label">${isCorrect ? "Correct!" : "Not quite."}</span>
-    </div>
-    <p class="feedback-explain">${explanation}</p>
-    ${standard ? `<p class="standard-tag">📌 MA STE Standard: ${standard}</p>` : ""}`;
+
+  if (activeMode === "drill") {
+    // Topic Review mode — full immediate feedback
+    fb.className = `feedback-box ${isCorrect ? "correct" : "wrong"}`;
+    fb.style.display = "block";
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <span class="feedback-icon">${isCorrect ? "✅" : "❌"}</span>
+        <span class="feedback-label">${isCorrect ? "Correct!" : "Not quite."}</span>
+      </div>
+      <p class="feedback-explain">${explanation}</p>
+      ${standard ? `<p class="standard-tag">📌 MA STE Standard: ${standard}</p>` : ""}`;
+  } else {
+    // Practice Test mode — silent: color choices only, no explanation
+    fb.style.display = "none";
+    fb.innerHTML = "";
+  }
 
   document.getElementById("btnCheck").style.display = "none";
   document.getElementById("btnNext").style.display  = "inline-block";
+  // In practice test mode, relabel the next button to feel more exam-like
+  document.getElementById("btnNext").textContent =
+    activeMode === "tests" ? "Next →" : "Next Question →";
+
+  // Log for report card
+  answeredLog.push({ q, correct: isCorrect, chosenText: chosenTextForLog });
+
   updateProgress();
 }
 
@@ -1142,6 +1278,298 @@ function showEndScreen() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
+// ══════════════════ REPORT CARD PDF ══════════════════
+function generateReport() {
+  if (!window.jspdf) {
+    alert('PDF library is still loading — please wait a moment and try again.');
+    return;
+  }
+  if (answeredLog.length === 0) {
+    alert('No answers recorded yet. Complete a practice test first!');
+    return;
+  }
+
+  const rawName     = (document.getElementById('studentNameInput').value || '').trim();
+  const studentName = rawName || 'Student';
+  const date        = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+  const testNames   = { g6:'Test 1 — Grade 6 Foundation', g7:'Test 2 — Grade 7 Building',
+                        g8:'Test 3 — Grade 8 MCAS-Ready', full:'Full Review (All Grades)', null:'Topic Review Session' };
+  const testLabel   = testNames[activePracticeTest] || 'Practice Session';
+  const total       = answeredLog.length;
+  const correct     = answeredLog.filter(r => r.correct).length;
+  const pct         = Math.round((correct / total) * 100);
+
+  function gradeLabel(p) {
+    if (p >= 93) return 'A';  if (p >= 87) return 'A-'; if (p >= 83) return 'B+';
+    if (p >= 77) return 'B';  if (p >= 70) return 'B-'; if (p >= 60) return 'C';
+    return 'Needs Practice';
+  }
+  function clean(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/[\u2192]/g, '->')
+      .replace(/[\u2014]/g, '--')
+      .replace(/[\u2013]/g, '-')
+      .replace(/[\u00B7]/g, '.')
+      .replace(/[\u2265\u2264]/g, m => m === '\u2265' ? '>=' : '<=')
+      .replace(/CO[\u2082]/g, 'CO2').replace(/O[\u2082]/g, 'O2')
+      .replace(/[\u2080-\u209C]/g, m => String.fromCharCode(m.charCodeAt(0) - 0x2050))
+      .replace(/[\u{1F000}-\u{1FFFF}]/gu, '').replace(/[\u{2600}-\u{27BF}]/gu, '')
+      .replace(/[\u{FE00}-\u{FEFF}]/gu, '').replace(/[\u200D]/g, '')
+      .replace(/\s{2,}/g, ' ').trim();
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit:'mm', format:'letter', orientation:'portrait' });
+  const PW=215.9, PH=279.4, ML=14, MR=14, CW=PW-ML-MR;
+
+  const C = {
+    dark:[10,17,26], navy:[20,38,58], navy2:[26,47,72],
+    teal:[59,200,232], tealDk:[14,126,158], teal10:[240,252,255], teal20:[207,243,250],
+    gold:[245,200,66], goldSft:[254,247,214],
+    white:[255,255,255], lgrey:[248,250,252], mgrey:[226,232,240],
+    dgrey:[51,65,85], muted:[100,116,139],
+    green:[22,163,74], red:[204,43,72], orange:[217,119,6],
+  };
+
+  const f   = c => doc.setFillColor(c[0],c[1],c[2]);
+  const s   = c => doc.setDrawColor(c[0],c[1],c[2]);
+  const t   = c => doc.setTextColor(c[0],c[1],c[2]);
+  const bold   = sz => { doc.setFont('helvetica','bold');   doc.setFontSize(sz); };
+  const normal = sz => { doc.setFont('helvetica','normal'); doc.setFontSize(sz); };
+  const italic = sz => { doc.setFont('helvetica','italic'); doc.setFontSize(sz); };
+  const rr = (x,y,w,h,r,style) => doc.roundedRect(x,y,w,h,r,r,style);
+
+  let y = 0;
+  function checkPage(needed) {
+    if (y + needed > PH - 16) { doc.addPage(); y = 0; drawContHeader(); }
+  }
+  function drawContHeader() {
+    f(C.navy); doc.rect(0,0,PW,12,'F');
+    f(C.teal); doc.rect(0,0,PW,1.8,'F');
+    bold(9); t(C.teal); doc.text('LYFELABZ  \u00B7  MCAS Practice Report Card', ML, 8.5);
+    bold(9); t(C.gold);  doc.text(clean(studentName), PW-MR, 8.5, {align:'right'});
+    y = 15;
+  }
+
+  // ── COVER ──────────────────────────────────────────
+  const hdrH = 72;
+  f(C.navy2); doc.rect(0,0,PW,hdrH,'F');
+  f(C.dark);  doc.rect(0,0,PW*0.42,hdrH,'F');
+  f(C.teal);  doc.rect(0,0,PW,2.5,'F');
+
+  // LyfeLabz wordmark
+  const boxW = PW*0.42, boxMid = boxW/2;
+  bold(36);
+  const totalW = doc.getTextWidth('LyfeLabz'), lyfeW = doc.getTextWidth('Lyfe');
+  const wordX = boxMid - totalW/2, wordY = hdrH/2 + 36*0.32;
+  t(C.white); doc.text('LyfeLabz', wordX, wordY);
+  t(C.gold);  doc.text('Labz', wordX+lyfeW, wordY);
+
+  // Right: title block
+  bold(18); t(C.white);  doc.text('MCAS PRACTICE', PW-MR, 24, {align:'right'});
+  bold(18); t(C.teal);   doc.text('REPORT CARD', PW-MR, 36, {align:'right'});
+  italic(10); t([180,210,240]); doc.text(clean(testLabel), PW-MR, 50, {align:'right'});
+  normal(9);  t(C.muted); doc.text(date, PW-MR, 60, {align:'right'});
+  y = hdrH;
+
+  // ── SCORE STRIP ────────────────────────────────────
+  f(C.navy2); doc.rect(0,y,PW,22,'F');
+  const gradeStr  = gradeLabel(pct);
+  const gradeCol  = pct>=80?C.teal:pct>=65?C.gold:C.red;
+  bold(14);  t(C.white); doc.text(clean(studentName), ML, y+14);
+  bold(15);  t(C.teal);  doc.text(`${correct} / ${total}`, PW/2, y+13, {align:'center'});
+  normal(8); t(C.muted); doc.text('TOTAL SCORE', PW/2, y+19, {align:'center'});
+  bold(16);  t(gradeCol); doc.text(gradeStr, PW-MR, y+14, {align:'right'});
+  normal(8); t(C.muted); doc.text('GRADE', PW-MR, y+19, {align:'right'});
+  y += 22;
+
+  // ── PROGRESS BAR ───────────────────────────────────
+  y += 5;
+  f(C.mgrey); rr(ML,y,CW,6,2,'F');
+  const barFill = total>0 ? Math.max((correct/total)*CW, correct>0?4:0) : 0;
+  f(C.teal); rr(ML,y,barFill,6,2,'F');
+  normal(9); t(C.muted);
+  doc.text(`${correct} of ${total} questions correctly answered  \u00B7  ${pct}%`, ML, y+11);
+  y += 18;
+
+  // ── DOMAIN PERFORMANCE ─────────────────────────────
+  checkPage(60);
+  f(C.teal20); rr(ML,y,CW,11,2,'F');
+  bold(9.5); t(C.tealDk); doc.text('DOMAIN PERFORMANCE SUMMARY', ML+5, y+8);
+  y += 15;
+
+  const domainDefs = [
+    { key:'ls',  label:'Life Science',         col:C.teal  },
+    { key:'ps',  label:'Physical Science',     col:C.gold  },
+    { key:'ess', label:'Earth & Space Science',col:[100,180,120] },
+    { key:'te',  label:'Tech & Engineering',   col:[180,140,230] },
+  ];
+  const colW2 = (CW-8)/2;
+  domainDefs.forEach((d,i) => {
+    const stat  = domainStats[d.key] || {c:0,t:0};
+    if (stat.t === 0) return;
+    const dp    = Math.round((stat.c/stat.t)*100);
+    const barC  = dp>=80?C.green:dp>=60?C.orange:C.red;
+    const col   = i%2, xOff = ML + col*(colW2+8);
+    if (col===0 && i>0) y += 20;
+    checkPage(20);
+    bold(10); t(C.dgrey);   doc.text(d.label, xOff, y+5);
+    normal(9); t(C.muted);  doc.text(`${stat.c}/${stat.t} (${dp}%)`, xOff+colW2, y+5, {align:'right'});
+    f(C.mgrey); rr(xOff,y+7,colW2,5,1.5,'F');
+    f(barC);    rr(xOff,y+7,Math.max((stat.c/stat.t)*colW2,stat.c>0?3:0),5,1.5,'F');
+  });
+  y += 24;
+
+  // ── GRADE-LEVEL BREAKDOWN ──────────────────────────
+  const gradeGroups = {};
+  answeredLog.forEach(r => {
+    const g = r.q.grade;
+    if (!gradeGroups[g]) gradeGroups[g] = {c:0,t:0};
+    gradeGroups[g].t++;
+    if (r.correct) gradeGroups[g].c++;
+  });
+  const hasMultipleGrades = Object.keys(gradeGroups).length > 1;
+  if (hasMultipleGrades) {
+    checkPage(40);
+    f(C.teal20); rr(ML,y,CW,11,2,'F');
+    bold(9.5); t(C.tealDk); doc.text('GRADE-LEVEL BREAKDOWN', ML+5, y+8);
+    y += 15;
+    const grades = ['6','7','8'];
+    const gLabels = {'6':'Grade 6 — Foundation','7':'Grade 7 — Building','8':'Grade 8 — MCAS-Ready'};
+    grades.forEach(g => {
+      const st = gradeGroups[g];
+      if (!st || st.t === 0) return;
+      checkPage(18);
+      const gp  = Math.round((st.c/st.t)*100);
+      const gbc = gp>=80?C.green:gp>=60?C.orange:C.red;
+      bold(10); t(C.dgrey);  doc.text(gLabels[g], ML, y+5);
+      normal(9); t(C.muted); doc.text(`${st.c}/${st.t} (${gp}%)`, ML+CW, y+5, {align:'right'});
+      f(C.mgrey); rr(ML,y+7,CW,5,1.5,'F');
+      f(gbc);     rr(ML,y+7,Math.max((st.c/st.t)*CW,st.c>0?3:0),5,1.5,'F');
+      y += 18;
+    });
+    y += 4;
+  }
+
+  // ── MISSED QUESTIONS ──────────────────────────────
+  const missed = answeredLog.filter(r => !r.correct);
+  if (missed.length > 0) {
+    checkPage(20);
+    f(C.teal20); rr(ML,y,CW,11,2,'F');
+    bold(9.5); t(C.tealDk); doc.text('QUESTIONS TO REVIEW', ML+5, y+8);
+    bold(8.5); t(C.muted);  doc.text(`${missed.length} of ${total} questions`, PW-MR, y+8, {align:'right'});
+    y += 15;
+
+    missed.forEach((r, i) => {
+      const q = r.q;
+      bold(9.5);
+      const stemText = clean(q.stem);
+      const stemLines = doc.splitTextToSize(stemText, CW-20);
+      const nStem = Math.min(stemLines.length, 3);
+      normal(9);
+      const expText  = clean(q.explanation || '');
+      const expLines = doc.splitTextToSize(expText, CW-20);
+      const nExp     = Math.min(expLines.length, 4);
+      const rowH     = 10 + nStem*5.5 + 12 + nExp*5 + 4;
+
+      checkPage(rowH+3);
+      f(i%2===0?C.lgrey:C.white); doc.rect(ML,y,CW,rowH,'F');
+      f(C.red); doc.rect(ML,y,3,rowH,'F');
+
+      // Standard + topic tags
+      bold(7.5); t(C.muted);
+      const tagStr = `${q.standard || ''}  \u00B7  ${clean(q.topic || '')}  \u00B7  ${q.type || ''}`;
+      doc.text(clean(tagStr), ML+7, y+5.5);
+
+      // Stem
+      const stemDisplay = stemLines.slice(0,3);
+      if (stemLines.length>3) stemDisplay[2] = stemDisplay[2].replace(/\.?\s*$/,'...');
+      bold(9.5); t(C.dgrey);
+      doc.text(stemDisplay, ML+7, y+10.5, {lineHeightFactor:1.4});
+
+      let subY = y + 10 + nStem*5.5 + 2;
+
+      // What they chose vs correct
+      if (r.chosenText) {
+        const sc = clean(r.chosenText); 
+        const scTrunc = sc.length>90 ? sc.substring(0,90)+'...' : sc;
+        italic(9); t(C.red); doc.text('Your answer: '+scTrunc, ML+7, subY); subY += 5.5;
+      }
+      const correctText = q.type === 'Multiple Select'
+        ? (q.answers||[]).map(i2 => clean(q.choices[i2])).join('; ')
+        : clean(q.choices[q.answer] || '');
+      const correctTrunc = correctText.length>90 ? correctText.substring(0,90)+'...' : correctText;
+      italic(9); t(C.green); doc.text('Correct: '+correctTrunc, ML+7, subY); subY += 6.5;
+
+      // Explanation
+      const expDisplay = expLines.slice(0,4);
+      if (expLines.length>4) expDisplay[3] = expDisplay[3].replace(/\.?\s*$/,'...');
+      normal(8.5); t(C.muted);
+      doc.text(expDisplay, ML+7, subY, {lineHeightFactor:1.4});
+
+      y += rowH+3;
+    });
+  } else {
+    // Perfect score callout
+    checkPage(24);
+    f(C.teal10); s(C.teal); doc.setLineWidth(0.5); rr(ML,y,CW,20,4,'FD');
+    bold(12); t(C.tealDk); doc.text('Perfect Score! Every question answered correctly.', PW/2, y+13, {align:'center'});
+    y += 26;
+  }
+
+  // ── FOCUS AREAS ───────────────────────────────────
+  if (missed.length > 0) {
+    const focusStandards = [...new Set(missed.map(r => r.q.standard).filter(Boolean))];
+    if (focusStandards.length > 0) {
+      checkPage(16 + focusStandards.length*7);
+      y += 4;
+      f(C.goldSft); rr(ML,y,CW,12,2,'F');
+      f(C.gold); doc.rect(ML,y,3,12,'F');
+      bold(9); t([140,100,0]); doc.text('FOCUS AREAS  \u2014  Standards to Revisit', ML+7, y+8.5);
+      y += 15;
+      focusStandards.forEach(std => {
+        checkPage(8);
+        f(C.lgrey); doc.rect(ML,y,CW,7,'F');
+        bold(9); t(C.tealDk); doc.text(clean(std), ML+5, y+5.2);
+        const stdTopic = missed.find(r => r.q.standard === std)?.q.topic || '';
+        normal(8.5); t(C.muted); doc.text(clean(stdTopic), ML+50, y+5.2);
+        y += 8;
+      });
+      y += 4;
+    }
+  }
+
+  // ── OVERALL FEEDBACK ──────────────────────────────
+  checkPage(36); y += 6;
+  const fbTitle = pct===100?'Perfect Score!':pct>=90?'Excellent Work':pct>=80?'Great Effort':pct>=70?'Good Progress':'Keep Practicing';
+  const fbMsg   = pct===100?'You answered every question correctly — outstanding mastery of the MA STE framework!'
+    :pct>=90?'Excellent performance! Review the one or two questions you missed and you\'ll be fully ready.'
+    :pct>=80?'Great work! Focus on the standards listed in your Focus Areas section to close the remaining gaps.'
+    :pct>=70?'Good effort — you\'re on the right track. Review your missed questions and practice those standards again.'
+    :'Keep studying! Work through the explanations for each missed question and retake the test. Every attempt builds understanding.';
+  f(C.teal10); s(C.teal); doc.setLineWidth(0.5); rr(ML,y,CW,30,4,'FD');
+  bold(12); t(C.tealDk); doc.text(fbTitle, ML+7, y+11);
+  normal(10); t(C.dgrey);
+  const msgLines = doc.splitTextToSize(fbMsg, CW-14);
+  doc.text(msgLines, ML+7, y+19, {lineHeightFactor:1.5});
+  y += 36;
+
+  // ── PAGE FOOTERS ──────────────────────────────────
+  const totalPages = doc.getNumberOfPages();
+  for (let p=1; p<=totalPages; p++) {
+    doc.setPage(p);
+    const fy = PH-13;
+    f(C.navy); doc.rect(0,fy,PW,13,'F');
+    f(C.teal); doc.rect(0,fy,PW,1.2,'F');
+    bold(9);   t(C.teal);  doc.text('LYFELABZ', ML, fy+8.5);
+    normal(8); t(C.muted); doc.text('mcas.lyfelabz.com  \u00B7  MCAS Practice  \u00B7  MA STE Grades 6\u20138  \u00B7  Educational Use Only', ML+24, fy+8.5);
+    normal(8); t(C.muted); doc.text('Page '+p+' of '+totalPages, PW-MR, fy+8.5, {align:'right'});
+  }
+
+  window.open(doc.output('bloburl'), '_blank');
+}
 </script>
 </body>
 </html>
