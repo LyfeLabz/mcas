@@ -125,6 +125,9 @@
     .btn-check:disabled { opacity: 0.38; cursor: default; }
     .btn-next { font-family: 'Fredoka One', cursive; font-size: 1rem; padding: 0.5rem 1.5rem; border-radius: 999px; border: 1.5px solid var(--teal); background: transparent; color: var(--teal); cursor: pointer; display: none; transition: background 0.13s; }
     .btn-next:hover { background: rgba(59,200,232,0.1); }
+    .btn-back { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.82rem; padding: 0.38rem 0.9rem; border-radius: 999px; border: 1.5px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; transition: all 0.13s; margin-right: auto; }
+    .btn-back:hover:not(:disabled) { border-color: var(--teal); color: var(--teal); }
+    .btn-back:disabled { opacity: 0.3; cursor: default; }
 
     .no-questions { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 1rem; }
 
@@ -138,6 +141,9 @@
     .end-breakdown-row span:last-child { font-family: 'Orbitron', monospace; font-size: 0.8rem; color: var(--gold); }
     .btn-restart { font-family: 'Fredoka One', cursive; font-size: 1.05rem; padding: 0.65rem 2rem; border-radius: 999px; border: none; background: var(--gold); color: var(--darker); cursor: pointer; transition: transform 0.1s; }
     .btn-restart:hover { transform: scale(1.03); }
+    .score-locked { background: rgba(255,255,255,0.04); border: 1.5px dashed var(--border); border-radius: 12px; padding: 1rem 1.5rem; max-width: 320px; margin: 0 auto 1.2rem; }
+    .score-locked-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+    .score-locked-msg { font-size: 0.88rem; color: var(--muted); font-weight: 600; line-height: 1.4; }
 
     .site-footer { background: var(--dark); border-top: 1px solid var(--border); text-align: center; padding: 1.1rem; font-size: 0.78rem; color: var(--muted); }
     .site-footer a { color: var(--teal); text-decoration: none; }
@@ -267,14 +273,15 @@
   <div class="question-area" id="questionArea"></div>
   <div class="end-screen" id="endScreen">
     <h2>Quiz Complete! 🎉</h2>
-    <div class="end-grade" id="endGrade">—</div>
-    <p class="end-msg" id="endMsg"></p>
-    <div class="end-breakdown" id="endBreakdown"></div>
-    <button class="btn-restart" onclick="restartQuiz()">Try Again</button>
-    <hr class="report-divider">
+    <div class="score-locked">
+      <div class="score-locked-icon">📋</div>
+      <div class="score-locked-msg">Generate your report to see your score,<br>domain breakdown, and focus areas.</div>
+    </div>
     <p class="report-label">GENERATE YOUR REPORT CARD</p>
     <input class="name-input" id="studentNameInput" type="text" placeholder="✏️ Type your name here" maxlength="60" />
     <button class="btn-report" onclick="generateReport()">📋 Generate My Report</button>
+    <hr class="report-divider">
+    <button class="btn-restart" onclick="restartQuiz()">Try Again</button>
   </div>
 </main>
 
@@ -970,7 +977,9 @@ let answered          = 0;
 let selectedChoice    = null;
 let selectedChoices   = [];
 let domainStats       = {};
-let answeredLog       = [];        // {q, correct, chosenIdx, chosenText} per question
+let answeredLog       = [];        // built from savedAnswers at report/endscreen time
+let savedAnswers      = {};        // keyed by qIdx: {q, correct, chosenText, chosenIdx, chosenIndices}
+let autoAdvanceTimer  = null;      // stores setTimeout ID for practice test auto-advance
 
 // ════════════════════ INIT ════════════════════
 function init() {
@@ -1030,6 +1039,8 @@ function loadQuestions() {
   selectedChoices = [];
   domainStats     = { ls:{c:0,t:0}, ps:{c:0,t:0}, ess:{c:0,t:0}, te:{c:0,t:0} };
   answeredLog     = [];
+  savedAnswers    = {};
+  if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
 
   document.getElementById("endScreen").style.display    = "none";
   document.getElementById("progressDash").style.display = "";
@@ -1112,15 +1123,52 @@ function renderQuestion() {
       <div class="choices">${choicesHTML}</div>
       <div class="feedback-box" id="feedbackBox"></div>
       <div class="q-actions">
+        <button class="btn-back" id="btnBack" onclick="goBack()" ${currentIdx === 0 || activeMode === 'drill' ? 'disabled style="display:none"' : ''}>← Back</button>
         <button class="btn-check" id="btnCheck" onclick="checkAnswer()" disabled>${activeMode === 'tests' ? 'Submit Answer' : 'Check Answer'}</button>
         <button class="btn-next"  id="btnNext"  onclick="nextQuestion()">Next Question →</button>
       </div>
     </div>`;
 
   updateProgress();
+
+  // ── Restore saved answer if student already answered this question ──
+  const saved = savedAnswers[currentIdx];
+  if (!saved) return;
+
+  const isMultiQ = saved.q.type === 'Multiple Select';
+  const choices  = document.querySelectorAll('.choice-btn');
+
+  // Highlight their previous selection
+  if (isMultiQ && saved.chosenIndices) {
+    saved.chosenIndices.forEach(i => { if (choices[i]) choices[i].classList.add('selected'); });
+    selectedChoices = [...saved.chosenIndices];
+  } else if (!isMultiQ && saved.chosenIdx !== null && saved.chosenIdx !== undefined) {
+    if (choices[saved.chosenIdx]) choices[saved.chosenIdx].classList.add('selected');
+    selectedChoice = saved.chosenIdx;
+  }
+
+  // Show both Submit (if they want to change) and Keep & Continue
+  document.getElementById('btnCheck').disabled          = false;
+  document.getElementById('btnCheck').style.display     = 'inline-block';
+  document.getElementById('btnNext').style.display      = 'inline-block';
+  document.getElementById('btnNext').textContent        =
+    activeMode === 'tests' ? 'Keep & Continue →' : 'Keep Answer →';
+
+  // In Topic Review: also restore the feedback explanation
+  if (activeMode === 'drill') {
+    const fb = document.getElementById('feedbackBox');
+    fb.className     = `feedback-box ${saved.correct ? 'correct' : 'wrong'}`;
+    fb.style.display = 'block';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <span class="feedback-icon">${saved.correct ? '✅' : '❌'}</span>
+        <span class="feedback-label">${saved.correct ? 'Correct!' : 'Not quite.'}</span>
+      </div>
+      <p class="feedback-explain">${saved.q.explanation || ''}</p>
+      ${saved.q.standard ? `<p class="standard-tag">📌 MA STE Standard: ${saved.q.standard}</p>` : ''}`;
+  }
 }
 
-// ══════════════════ INTERACTION ══════════════════
 function selectChoice(btn, idx) {
   if (btn.closest(".choices").querySelector(".correct,.wrong")) return;
   const q = filteredQs[currentIdx];
@@ -1195,12 +1243,17 @@ function checkAnswer() {
     selectedChoice = null;
   }
 
-  if (isCorrect) score++;
-  answered++;
+  // Store answer — keyed by position so going back overwrites cleanly
+  savedAnswers[currentIdx] = {
+    q, correct: isCorrect,
+    chosenText: chosenTextForLog,
+    chosenIdx: isMulti ? null : selectedChoice,
+    chosenIndices: isMulti ? [...selectedChoices] : null,
+  };
 
-  if (!domainStats[q.domain]) domainStats[q.domain] = {c:0,t:0};
-  domainStats[q.domain].t++;
-  if (isCorrect) domainStats[q.domain].c++;
+  // Recompute running totals from savedAnswers (safe across back navigation)
+  score    = Object.values(savedAnswers).filter(a => a.correct).length;
+  answered = Object.keys(savedAnswers).length;
 
   const fb = document.getElementById("feedbackBox");
 
@@ -1225,40 +1278,65 @@ function checkAnswer() {
 
   if (activeMode === "tests") {
     // Practice test mode — auto-advance after 600ms so green/red registers
-    setTimeout(() => nextQuestion(), 600);
+    autoAdvanceTimer = setTimeout(() => { autoAdvanceTimer = null; nextQuestion(); }, 600);
   } else {
     // Topic Review mode — show Next button manually
     document.getElementById("btnNext").style.display = "inline-block";
     document.getElementById("btnNext").textContent   = "Next Question →";
   }
 
-  // Log for report card
-  answeredLog.push({ q, correct: isCorrect, chosenText: chosenTextForLog });
+  // answeredLog is rebuilt from savedAnswers at report time — no push needed here
 
   updateProgress();
 }
 
 function nextQuestion() { currentIdx++; renderQuestion(); }
 
+// ══════════════════ BACK NAVIGATION ══════════════════
+function goBack() {
+  if (currentIdx === 0) return;
+  if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+  currentIdx--;
+  renderQuestion();
+  updateProgress();
+}
+
 function updateProgress() {
   const total = filteredQs.length;
+  const ans   = Object.keys(savedAnswers).length;
+  const sc    = Object.values(savedAnswers).filter(a => a.correct).length;
   document.getElementById("progressLabel").textContent =
     total ? `QUESTION ${Math.min(currentIdx+1,total)} OF ${total}` : "NO QUESTIONS";
-
-  // In Practice Test mode hide running score so students can't track in real time
+  // In Practice Test mode hide running score
   document.getElementById("scoreLabel").textContent =
-    activeMode === "tests" ? "—" : (answered ? `${score} / ${answered}` : "—");
-
-  // Bar shows how far through the quiz, not accuracy
+    activeMode === "tests" ? "—" : (ans ? `${sc} / ${ans}` : "—");
+  // Bar = how many distinct questions answered / total
   document.getElementById("progressFill").style.width =
-    (total && answered) ? `${(answered/total)*100}%` : "0%";
+    (total && ans) ? `${(ans/total)*100}%` : "0%";
 }
 
 // ══════════════════ END SCREEN ══════════════════
+function buildStatsFromSaved() {
+  // Rebuild answeredLog and domainStats fresh from savedAnswers
+  answeredLog = Object.values(savedAnswers);
+  domainStats = { ls:{c:0,t:0}, ps:{c:0,t:0}, ess:{c:0,t:0}, te:{c:0,t:0} };
+  answeredLog.forEach(a => {
+    const d = a.q.domain;
+    if (!domainStats[d]) domainStats[d] = {c:0,t:0};
+    domainStats[d].t++;
+    if (a.correct) domainStats[d].c++;
+  });
+}
+
 function showEndScreen() {
   document.getElementById("questionArea").style.display  = "none";
   document.getElementById("progressDash").style.display  = "none";
-  const pct = filteredQs.length ? Math.round((score/filteredQs.length)*100) : 0;
+
+  buildStatsFromSaved();
+
+  const total = filteredQs.length;
+  const sc    = answeredLog.filter(a => a.correct).length;
+  const pct   = total ? Math.round((sc/total)*100) : 0;
   let grade, msg;
   if      (pct>=90) { grade=`${pct}% 🏆`; msg="Outstanding! You've mastered these concepts."; }
   else if (pct>=80) { grade=`${pct}% 🌟`; msg="Great work! Review the questions you missed and try again."; }
@@ -1280,6 +1358,43 @@ function showEndScreen() {
   document.getElementById("endScreen").style.display = "block";
 }
 
+// ══════════════════ DEMO HOTKEY ══════════════════
+// Shift+D — auto-fills random answers for all remaining questions and shows end screen
+// Only works when a practice test is active and questions are loaded
+function demoFill() {
+  if (activeMode !== 'tests' || filteredQs.length === 0) return;
+  if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+
+  filteredQs.forEach((q, idx) => {
+    if (savedAnswers[idx]) return; // skip already answered
+    const isMulti   = q.type === 'Multiple Select';
+    const isCorrect = Math.random() > 0.45; // ~55% correct for realistic demo
+    let chosenIdx, chosenIndices, chosenText;
+
+    if (isMulti) {
+      // Randomly pick same or different set from correct answers
+      chosenIndices  = isCorrect
+        ? [...q.answers]
+        : q.answers.map(i => (i + 1) % q.choices.length); // offset wrong
+      chosenText     = chosenIndices.map(i => q.choices[i]).join('; ');
+      const sortedS  = [...chosenIndices].sort().join(',');
+      const sortedC  = [...q.answers].sort().join(',');
+      const realCorrect = sortedS === sortedC;
+      savedAnswers[idx] = { q, correct: realCorrect, chosenText, chosenIdx: null, chosenIndices };
+    } else {
+      chosenIdx  = isCorrect ? q.answer : (q.answer + 1 + Math.floor(Math.random() * 3)) % q.choices.length;
+      chosenText = q.choices[chosenIdx];
+      savedAnswers[idx] = { q, correct: chosenIdx === q.answer, chosenText, chosenIdx, chosenIndices: null };
+    }
+  });
+
+  showEndScreen();
+}
+
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === '1') demoFill();
+});
+
 document.addEventListener("DOMContentLoaded", init);
 
 // ══════════════════ REPORT CARD PDF ══════════════════
@@ -1288,10 +1403,12 @@ function generateReport() {
     alert('PDF library is still loading — please wait a moment and try again.');
     return;
   }
-  if (answeredLog.length === 0) {
+  if (Object.keys(savedAnswers).length === 0) {
     alert('No answers recorded yet. Complete a practice test first!');
     return;
   }
+
+  buildStatsFromSaved();
 
   const rawName     = (document.getElementById('studentNameInput').value || '').trim();
   const studentName = rawName || 'Student';
