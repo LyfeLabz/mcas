@@ -1362,7 +1362,14 @@ function showEndScreen() {
 // Shift+D — auto-fills random answers for all remaining questions and shows end screen
 // Only works when a practice test is active and questions are loaded
 function demoFill() {
-  if (activeMode !== 'tests' || filteredQs.length === 0) return;
+  // If not in tests mode, switch to it and select Test 1
+  if (activeMode !== 'tests' || !activePracticeTest) {
+    switchMode('tests');
+    selectTest('g6');
+    // Brief delay to let questions load before filling
+    setTimeout(demoFill, 100);
+    return;
+  }
   if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
 
   filteredQs.forEach((q, idx) => {
@@ -1392,7 +1399,11 @@ function demoFill() {
 }
 
 document.addEventListener('keydown', e => {
-  if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === '1') demoFill();
+  // Demo hotkey: Ctrl+Shift+D (avoids Chrome's Cmd+number tab-switching shortcuts)
+  if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+    e.preventDefault();
+    demoFill();
+  }
 });
 
 document.addEventListener("DOMContentLoaded", init);
