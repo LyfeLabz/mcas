@@ -1299,11 +1299,7 @@ function renderCRQuestion() {
 
   area.innerHTML = `
     <div class="cr-card">
-      <div class="cr-meta">
-        <span class="cr-dese-tag">${q.source}</span>
-        <span class="cr-std-tag">${q.standard}</span>
-        <span class="cr-topic-tag">${q.topic}</span>
-      </div>
+
       <div class="cr-stimulus">
         <div class="cr-stimulus-label">Stimulus / Background Information</div>
         ${q.stimulus.replace(/\n/g,'<br>').replace(/→/g,'→').replace(/✓/g,'✓').replace(/✗/g,'✗')}
