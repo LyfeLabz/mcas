@@ -275,12 +275,9 @@
   </div>
   <div class="question-area" id="questionArea"></div>
   <div class="end-screen" id="endScreen">
-    <h2>Quiz Complete! 🎉</h2>
-    <div class="score-locked">
-      <div class="score-locked-icon">📋</div>
-      <div class="score-locked-msg">Generate your report to see your score,<br>domain breakdown, and focus areas.</div>
-    </div>
-    <p class="report-label">ENTER YOUR NAME TO CONTINUE</p>
+    <h2>Part 1 Complete ✓</h2>
+
+    <p class="report-label">ENTER YOUR NAME TO BEGIN PART 2</p>
     <input class="name-input" id="studentNameInput" type="text" placeholder="✏️ Type your name here" maxlength="60" />
     <hr class="report-divider">
     <button class="btn-cr-start" id="btnCRStart" onclick="startCR()">✏️ Continue to Part 2: Written Response →</button>
@@ -1841,30 +1838,7 @@ function buildStatsFromSaved() {
 function showEndScreen() {
   document.getElementById("questionArea").style.display  = "none";
   document.getElementById("progressDash").style.display  = "none";
-
   buildStatsFromSaved();
-
-  const total = filteredQs.length;
-  const sc    = answeredLog.filter(a => a.correct).length;
-  const pct   = total ? Math.round((sc/total)*100) : 0;
-  let grade, msg;
-  if      (pct>=90) { grade=`${pct}% 🏆`; msg="Outstanding! You've mastered these concepts."; }
-  else if (pct>=80) { grade=`${pct}% 🌟`; msg="Great work! Review the questions you missed and try again."; }
-  else if (pct>=70) { grade=`${pct}% 💪`; msg="Solid effort! Keep reviewing — you're making real progress."; }
-  else if (pct>=60) { grade=`${pct}%`;    msg="Good start! Focus on the topics where you missed the most."; }
-  else              { grade=`${pct}%`;    msg="Keep practicing — every attempt builds your understanding!"; }
-  document.getElementById("endGrade").textContent = grade;
-  document.getElementById("endMsg").textContent   = msg;
-
-  const domainNames = {ls:"🌱 Life Science",ps:"⚡ Physical Science",ess:"🌍 Earth & Space",te:"🔧 Tech & Engineering"};
-  let html = "";
-  Object.entries(domainStats).forEach(([k,v]) => {
-    if (v.t > 0) {
-      const dp = Math.round((v.c/v.t)*100);
-      html += `<div class="end-breakdown-row"><span>${domainNames[k]}</span><span>${v.c}/${v.t} (${dp}%)</span></div>`;
-    }
-  });
-  document.getElementById("endBreakdown").innerHTML = html;
   document.getElementById("endScreen").style.display = "block";
   updateCRButton();
 }
