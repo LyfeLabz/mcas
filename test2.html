@@ -985,11 +985,11 @@ const QUESTIONS = [
 // ANTHROPIC API KEY — fill this in before deploying
 // Get yours at: https://platform.claude.com  (free $5 credit on signup)
 // ═══════════════════════════════════════════════════════════════════
-const ANTHROPIC_API_KEY = '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';
+const ANTHROPIC_API_KEY = '';
 
 // ── Google Apps Script endpoint — paste your Web App URL here ────────────────
 // Get this by deploying LyfeLabz_MCAS_Logger.gs as a Web App (see setup guide)
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzC6uQjT1av-RC2VgurlWCCE5iFkuDJh5quAmoDiWlqeBmNFv4irtb-_P7_b1zDFGWy/exec';
+const APPS_SCRIPT_URL = '';
 
 // ─── CONSTRUCTED RESPONSE QUESTIONS ────────────────────────────────
 // Adapted from DESE MCAS Grade 8 STE Released Items (2022–2024)
@@ -1738,33 +1738,18 @@ function checkAnswer() {
     : (selectedChoice !== null ? q.choices[selectedChoice] : '');
 
   if (isMulti) {
-    const correctSet = q.answers; // array of correct indices
-    // Mark all correct answers green
-    correctSet.forEach(i => {
-      choices[i].classList.add("correct");
-      choices[i].classList.remove("selected");
-    });
-    // Mark wrong selections red
-    selectedChoices.forEach(i => {
-      if (!correctSet.includes(i)) {
-        choices[i].classList.add("wrong");
-        choices[i].classList.remove("selected");
-      }
-    });
-    // Full credit only if exact match
+    const correctSet = q.answers;
     const sortedSelected = [...selectedChoices].sort().join(",");
     const sortedCorrect  = [...correctSet].sort().join(",");
     isCorrect = sortedSelected === sortedCorrect;
+    // No color flash on test pages — just disable and advance
+    choices.forEach(b => b.classList.remove("selected"));
     selectedChoices = [];
   } else {
     const correct = q.answer;
     isCorrect = selectedChoice === correct;
-    choices[correct].classList.add("correct");
-    choices[correct].classList.remove("selected");
-    if (!isCorrect) {
-      choices[selectedChoice].classList.add("wrong");
-      choices[selectedChoice].classList.remove("selected");
-    }
+    // No color flash on test pages — just disable and advance
+    choices.forEach(b => b.classList.remove("selected"));
     selectedChoice = null;
   }
 
