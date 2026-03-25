@@ -277,8 +277,6 @@
   <div class="end-screen" id="endScreen">
     <h2>Part 1 Complete ✓</h2>
 
-    <p class="report-label">ENTER YOUR NAME TO BEGIN PART 2</p>
-    <input class="name-input" id="studentNameInput" type="text" placeholder="✏️ Type your name here" maxlength="60" />
     <hr class="report-divider">
     <button class="btn-cr-start" id="btnCRStart" onclick="startCR()">✏️ Continue to Part 2: Written Response →</button>
   </div>
@@ -1312,7 +1310,7 @@ function renderCRQuestion() {
         <button class="btn-cr-grade" id="btnCRGrade" onclick="submitCRResponse()" ${savedResp.length < 15 ? 'disabled' : ''}>
           Grade →
         </button>
-        <span class="cr-api-note">Powered by Claude Haiku · Rubric-aligned to MCAS standards</span>
+        
       </div>
       <div class="cr-loading" id="crLoading" style="display:none">
         <span class="cr-loading-dots">Sending to Claude AI for grading…</span><br>
@@ -2334,7 +2332,7 @@ function generateFullReport() {
 
 // ─── FINAL SUBMIT (test pages only — no PDF) ─────────────────────────────────
 function submitFinalScore() {
-  const nameInput = document.getElementById('crNameInput') || document.getElementById('studentNameInput');
+  const nameInput = document.getElementById('crNameInput');
   const name = (nameInput?.value || '').trim() || 'Student';
 
   // Log to Google Sheet
